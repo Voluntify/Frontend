@@ -1,0 +1,125 @@
+/* Estilos generales */
+* {
+    font-family: 'Poppins';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+/* Estilo principal */
+main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ff6f59;
+    padding: 3rem;
+    width: 100vw;
+    height: 100vh;
+    color: #ffffff;
+    flex-wrap: wrap;
+}
+.content{
+    padding: 70px 60px 60px 60px;
+}
+
+main h1 {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+main h2 {
+    font-size: 25px;
+    font-weight: normal;
+    margin-bottom: 32px;
+    line-height: 1px;
+}
+
+
+/* Contenedor de botones */
+main div div {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.options{
+    padding: 30px 0px;
+}
+
+/* Botones */
+button {
+    background-color: #B8CDF8;
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 70px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 2px 2px 5px grey;
+}
+
+button:hover {
+    background-color: #729fcf;
+}
+
+button:last-of-type {
+    background-color: #a48df0;
+}
+
+button:last-of-type:hover {
+    background-color: #8f76d0;
+}
+
+.image{
+    flex: 1;
+}
+
+.image img{
+    width: 100%;
+    height: auto;
+    border-radius: 50px;
+    box-shadow: 0px 4px 10px black;
+}
+
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+        height: auto;
+    }
+
+    main div:first-child {
+        max-width: 100%;
+    }
+
+    main h1 {
+        font-size: 2.5rem;
+    }
+
+    main p {
+        font-size: 1.1rem;
+    }
+
+    main img {
+        max-width: 100%;
+        margin-top: 1.5rem;
+    }
+}
