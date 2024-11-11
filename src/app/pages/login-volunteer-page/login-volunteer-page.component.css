@@ -49,21 +49,57 @@ main {
 }
 
 .login {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 50px;
+    gap: 20px;
 }
 
-.email{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+mat-label {
+    color: #575757;
+    font-size: 16px;
 }
 
-.password{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+mat-form-field {
+    border-radius: 8px;
+    width: 100%;
 }
+.custom-form-field {
+    width: 100%;
+    max-width: 500px;
+}
+
+button {
+    background-color: #9D8DF1;
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 50%;
+    transition: background-color 0.3s ease;
+    box-shadow: 2px 2px 5px grey;
+}
+
+
+button:hover {
+    background-color: #8f76d0;
+}
+
+.link{
+    color: #9D8DF1;
+    font-size: 16px;
+    font-weight: bold;     
+    text-decoration: none;
+}
+
+.link:hover{
+    color: #8f76d0;
+}
+
 
   

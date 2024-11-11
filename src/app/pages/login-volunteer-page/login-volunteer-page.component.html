@@ -6,15 +6,20 @@
         <h1>Inicia sesión</h1>
         <p>¡Bienvenido! Ingresa tus datos para iniciar sesión en Voluntify.</p>
         <div class="login">
-            <mat-form-field appearance="outline">
-                <mat-label>Email</mat-label>
-                <input matInput formControlName="correo" required />
-              </mat-form-field>
 
-              <mat-form-field appearance="outline">
-                <mat-label>Contraseña</mat-label>
+            <!--Campo de correo-->
+            <mat-form-field appearance="fill" class="custom-form-field">
+                <mat-label class="email">Email</mat-label>
+                <input matInput formControlName="correo" required />
+            </mat-form-field>
+            
+            <!--Campo de contraseña-->
+            <mat-form-field appearance="fill" class="custom-form-field">
+                <mat-label class="password">Contraseña</mat-label>
                 <input matInput formControlName="contrasena" required />
-              </mat-form-field>
+            </mat-form-field>
+            <button routerLink="/main">Iniciar sesión</button>
+            <p>¿No tienes una cuenta? <a [routerLink]="'/register-volunteer'" class="link">Regístrate</a></p>
         </div>
     </div>
 </main>
