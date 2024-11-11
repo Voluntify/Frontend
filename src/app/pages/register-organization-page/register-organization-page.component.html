@@ -1,1 +1,148 @@
-<p>register-organization-page works!</p>
+<div class="container">
+    <h2>Registro de Organizacion</h2>
+    <form [formGroup]="registerOrgForm" (ngSubmit)="registrarOrganizacion()">
+
+    <!-- Campo del nombre -->
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" required />
+        <!-- Validaciones -->
+        <mat-error *ngIf="registerOrgForm.get('nombre')?.invalid && (registerOrgForm.get('nombre')?.dirty || 
+        registerOrgForm.get('nombre')?.touched)">
+        {{ registerOrgForm.get('nombre')?.hasError('required') ? 'El nombre es obligatorio' : '' }}  
+        {{ registerOrgForm.get('nombre')?.hasError('minlength') ? 'El nombre debe tener minimo 10 caracteres' : '' }}  
+
+        </mat-error>
+      </mat-form-field>
+
+    <!-- Campo de la descripcion -->
+      <mat-form-field appearance="outline">
+        <mat-label>Descripcion</mat-label>
+        <input matInput formControlName="descripcion" required />
+        <!-- Validaciones -->
+        <mat-error *ngIf="registerOrgForm.get('descripcion')?.invalid && (registerOrgForm.get('descripcion')?.dirty || 
+        registerOrgForm.get('descripcion')?.touched)">
+        {{ registerOrgForm.get('descripcion')?.hasError('required') ? 'La descripcion es obligatoria' : '' }}  
+        {{ registerOrgForm.get('descripcion')?.hasError('minlength') ? 'La descripcion debe tener minimo 10 caracteres' : '' }}  
+        </mat-error>
+      </mat-form-field>
+  
+     
+    <!-- Campo del correo -->
+    <mat-form-field appearance="outline">
+        <mat-label>Correo electrónico</mat-label>
+        <input matInput formControlName="correo" required />
+        <!-- Validaciones -->
+        <mat-error *ngIf="registerOrgForm.get('correo')?.invalid && (registerOrgForm.get('correo')?.dirty || 
+        registerOrgForm.get('correo')?.touched)">
+        {{ registerOrgForm.get('correo')?.hasError('required') ? 'El correo es obligatorio' : '' }}  
+        {{ registerOrgForm.get('correo')?.hasError('minlength') ? 'El correo debe tener minimo 10 caracteres' : '' }}  
+        </mat-error>
+    </mat-form-field>
+
+    <!-- Campo del telefono -->
+    <mat-form-field appearance="outline">
+      <mat-label>Telefono</mat-label>
+      <input matInput formControlName="telefono" type="tel" required />
+      <!-- Validaciones -->
+      <mat-error *ngIf="registerOrgForm.get('telefono')?.invalid && (registerOrgForm.get('telefono')?.dirty || 
+      registerOrgForm.get('telefono')?.touched)">
+        {{ registerOrgForm.get('telefono')?.hasError('required') ? 'El telefono es obligatorio' : '' }}  
+        {{ registerOrgForm.get('telefono')?.hasError('minlength') ? 'El telefono debe tener 9 digitos' : '' }}
+        </mat-error>
+
+    </mat-form-field>   
+
+    <!-- Campo de la direccion -->
+    <mat-form-field appearance="outline">
+        <mat-label>Direccion</mat-label>
+        <input matInput formControlName="direccion" required />
+        <!-- Validaciones -->
+        <mat-error *ngIf="registerOrgForm.get('direccion')?.invalid && (registerOrgForm.get('direccion')?.dirty || 
+        registerOrgForm.get('direccion')?.touched)">
+        {{ registerOrgForm.get('direccion')?.hasError('required') ? 'La direccion es obligatorio' : '' }}  
+        {{ registerOrgForm.get('direccion')?.hasError('minlength') ? 'La direccion debe tener minimo 10 caracteres' : '' }}  
+        </mat-error>
+    </mat-form-field>    
+
+    <!-- Campo de sitio_web -->
+    <mat-form-field appearance="outline">
+        <mat-label>Sitio Web</mat-label>
+        <input matInput formControlName="sitio_web" required />
+        <!-- Validaciones -->
+        <mat-error *ngIf="registerOrgForm.get('sitio_web')?.invalid && (registerOrgForm.get('sitio_web')?.dirty || 
+        registerOrgForm.get('sitio_web')?.touched)">
+        {{ registerOrgForm.get('sitio_web')?.hasError('required') ? 'El sitio web es obligatoria' : '' }}  
+        {{ registerOrgForm.get('sitio_web')?.hasError('minlength') ? 'El sitio web debe tener minimo 8 caracteres' : '' }}  
+        </mat-error>
+    </mat-form-field>        
+  
+    <!-- Campo de la fecha -->
+    <mat-form-field appearance="outline">
+        <mat-label>Fecha de Registro</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fecha_registro" required />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <!-- Validaciones -->
+        <mat-error *ngIf="registerOrgForm.get('fecha_registro')?.invalid && (registerOrgForm.get('fecha_registro')?.dirty || 
+        registerOrgForm.get('fecha_registro')?.touched)">
+        {{ registerOrgForm.get('fecha_registro')?.hasError('required') ? 'La fecha es obligatorio' : '' }}  
+        {{ registerOrgForm.get('fecha_registro')?.hasError('FechaInvalida') ? 'La fecha debe ser la misma que la fecha de hoy' : '' }}
+    </mat-error>
+    </mat-form-field>
+
+    <!-- Campo de suscripcion_activa -->
+    <mat-radio-group formControlName="suscripcion_activa">
+      <mat-radio-button class="example-margin" value="true">Suscribirse</mat-radio-button>
+      <mat-radio-button class="example-margin" value="false">No Suscribirse</mat-radio-button>
+    </mat-radio-group>
+    <!-- Validaciones -->
+    <mat-error *ngIf="registerOrgForm.get('suscripcion_activa')?.invalid && (registerOrgForm.get('suscripcion_activa')?.dirty || 
+    registerOrgForm.get('suscripcion_activa')?.touched)">
+      {{ registerOrgForm.get('suscripcion_activa')?.hasError('required') ? 'Campo suscripcion_activa es obligatorio' : '' }}  
+      </mat-error>
+
+    <!-- Campo del nivel_suscripcion -->
+    <mat-form-field appearance="outline">
+      <mat-label>Nivel de Suscripcion</mat-label>
+      <mat-select formControlName="nivel_suscripcion" required>
+        <mat-option *ngFor="let nivel_suscripcion of Nivel" [value]="nivel_suscripcion">{{ nivel_suscripcion }}</mat-option>
+      </mat-select>
+      <!-- Validaciones -->
+      <mat-error *ngIf="registerOrgForm.get('nivel_suscripcion')?.invalid && (registerOrgForm.get('nivel_suscripcion')?.dirty || 
+      registerOrgForm.get('nivel_suscripcion')?.touched)">
+      {{ registerOrgForm.get('nivel_suscripcion')?.hasError('required') ? 'El nivel_suscripcion es obligatoria' : '' }}  
+  </mat-error>
+  </mat-form-field>
+
+      <!-- Campo de la contraseña -->
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="contrasena" required />
+        <!-- Validaciones -->
+        <mat-error *ngIf="registerOrgForm.get('contrasena')?.invalid && (registerOrgForm.get('contrasena')?.dirty || 
+        registerOrgForm.get('contrasena')?.touched)">
+        {{ registerOrgForm.get('contrasena')?.hasError('required') ? 'La contrasena es obligatoria' : '' }}  
+        {{ registerOrgForm.get('contrasena')?.hasError('minlength') ? 'La contraseña debe tener minimo 6 caracteres' : '' }}  
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Campo del rol -->
+      <mat-form-field appearance="outline">
+        <mat-label>Rol</mat-label>
+        <input matInput formControlName="rol" required />
+        <!-- Validaciones -->
+        <mat-error *ngIf="registerOrgForm.get('rol')?.invalid && (registerOrgForm.get('rol')?.dirty || 
+        registerOrgForm.get('rol')?.touched)">
+        {{ registerOrgForm.get('rol')?.hasError('required') ? 'El rol es obligatoria' : '' }}  
+        {{ registerOrgForm.get('rol')?.hasError('minlength') ? 'El rol debe tener minimo 6 caracteres' : '' }}  
+        </mat-error>
+      </mat-form-field>
+     
+
+      <div class="button-group">
+      <button mat-raised-button color="primary" type="submit" [disabled]="registerOrgForm.invalid">Registrar</button>
+      <button mat-button color="warn" type="button" (click)="cancelar()">Cancelar</button>
+    </div>
+    </form>
+  </div>
