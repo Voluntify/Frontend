@@ -1,14 +1,11 @@
-<mat-toolbar color="primary">
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span>My App</span>
+<mat-toolbar>
+        <span>LOGO</span>
         <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-          <mat-icon>add</mat-icon>
-        </button>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-          <mat-icon>share</mat-icon>
-        </button>
-
+        <div class="navbar">
+            <button routerLink="/volunteers" class="volunteers-btn">Voluntariados</button>
+            <button routerLink="/organizations" class="organizations-btn">Organizaciones</button>
+            <button mat-icon-button aria-label="menu icon">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
 </mat-toolbar>

@@ -1,12 +1,4 @@
 * {
-    font-family: 'Poppins';
-    box-sizing: border-box;
-}
-
-
-html {
-    scroll-behavior: smooth;
-    font-family: 'Poppins';
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -15,39 +7,33 @@ html {
 mat-toolbar {
     background-color: #FAF0FB;
     display: flex;
-    align-items: center;
-    min-height: 80.50px;
-    font-size: 25px;
-    overflow: hidden;
     justify-content: space-between;
-    padding: 30px;
+    padding: 20px 30px;
     position: fixed;
     width: 100%;
+    top: 0;
+    font-family: 'Poppins';
 }
 
-.logo {
-    padding: 50px;
+.example-spacer {
+    flex: 1 1 auto;
 }
 
-.logo h1{
-    font-weight: bold;
-}
-
-.login{
-    padding: 50px;
+button.mat-icon-button {
+    color: black;
 }
 
 button {
+    background-color: transparent;
+    font-family: Poppins;
     color: black;
+    font-weight: 550;
     border: none;
-    padding: 0.75rem 1.5rem;
     font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.example-spacer {
-    flex: 1 1 auto;
-  }
-
-
+.volunteers-btn, .organizations-btn{
+    padding: 0.75rem 1.5rem;
+}

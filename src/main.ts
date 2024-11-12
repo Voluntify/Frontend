@@ -15,6 +15,8 @@ import { LoginPageComponent } from './app/pages/login-page/login-page.component'
 import { LoginVolunteerPageComponent } from './app/pages/login-volunteer-page/login-volunteer-page.component';
 import { LoginOrganizationPageComponent } from './app/pages/login-organization-page/login-organization-page.component';
 import { MainPageComponent } from './app/pages/main-page/main-page.component';
+import { VolunteersPageComponent } from './app/pages/volunteers-page/volunteers-page.component';
+import { OrganizationsPageComponent } from './app/pages/organizations-page/organizations-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'start', pathMatch: 'full' },
@@ -27,7 +29,9 @@ const routes: Routes = [
   { path: 'login-organization', component: LoginOrganizationPageComponent},
   { path: 'register-volunteer', component: RegisterVolunteerPageComponent},
   { path: 'register-organization', component: RegisterOrganizationPageComponent},
-  { path: 'main', component: MainPageComponent}
+  { path: 'main', component: MainPageComponent},
+  { path: 'volunteers', component: VolunteersPageComponent},
+  { path: 'organizations', component: OrganizationsPageComponent},
 ];
 
 bootstrapApplication(AppComponent, {
