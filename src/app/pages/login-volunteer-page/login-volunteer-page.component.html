@@ -1,34 +1,39 @@
 <main>
-    <div class="image">
-      <img src="login-volunteer.jpg" alt="login-volunteer image" />
-    </div>
-    <div class="text">
-      <h1>Inicia sesión</h1>
-      <p>¡Bienvenido! Ingresa tus datos para iniciar sesión en Voluntify.</p>
-      <div class="login">
-        <form [formGroup]="loginVolunteerForm" (ngSubmit)="LoginVolunteer()">
+  <div class="image">
+    <img src="login-volunteer.jpg" alt="login-volunteer image" />
+  </div>
+  <div class="text">
+    <h1>Inicia sesión</h1>
+    <p>¡Bienvenido! Ingresa tus datos para iniciar sesión en Voluntify.</p>
+    <div class="login">
+      <form [formGroup]="loginVolunteerForm" (ngSubmit)="LoginVolunteer()">
 
-          <!-- Campo de nombre -->
-          <mat-form-field appearance="fill" class="custom-form-field">
-            <mat-label class="nombre">Nombre</mat-label>
-            <input matInput formControlName="nombre" required />
-          </mat-form-field>
-  
-          <!-- Campo de contraseña -->
-          <mat-form-field appearance="fill" class="custom-form-field">
-            <mat-label class="password">Contraseña</mat-label>
-            <input matInput formControlName="contrasena" required />
-          </mat-form-field>
-  
-          <!-- Botón de inicio de sesión -->
-          <button mat-raised-button color="primary" type="submit" [disabled]="loginVolunteerForm.invalid">Iniciar sesión</button>
-        </form>
-  
-        <!-- Enlace para registro -->
-        <p>¿No tienes una cuenta? 
-          <a [routerLink]="'/register-volunteer'" class="link">Regístrate</a>
-        </p>
-      </div>
+        <!-- Campo de nombre -->
+        <mat-form-field appearance="fill" class="custom-form-field">
+          <mat-label class="nombre">Nombre</mat-label>
+          <input matInput formControlName="nombre" required />
+        </mat-form-field>
+    
+        <!-- Campo de contraseña -->
+        <mat-form-field appearance="fill" class="custom-form-field">
+          <mat-label class="password">Contraseña</mat-label>
+          <input matInput formControlName="contrasena" required [type]="hide() ? 'password' : 'text'" />
+          <button
+            mat-icon-button matSuffix type="button" (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+            <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+      
+        <!-- Botón de inicio de sesión -->
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginVolunteerForm.invalid">Iniciar sesión</button>
+      </form>
+    
+      <!-- Enlace para registro -->
+      <p>¿No tienes una cuenta? 
+        <a [routerLink]="'/register-volunteer'" class="link">Regístrate</a>
+      </p>
     </div>
-  </main>
+  </div>
+</main>
+
   

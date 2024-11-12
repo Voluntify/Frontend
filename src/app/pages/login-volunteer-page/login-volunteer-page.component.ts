@@ -24,6 +24,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class LoginVolunteerPageComponent {
   loginVolunteerForm: FormGroup;
 
+  hide = signal(true);
+  clickEvent(event: MouseEvent) {
+    this.hide.set(!this.hide());
+    event.stopPropagation();
+  }
+
   constructor(
     private fb: FormBuilder,
     private voluntifyService: VoluntifyService,

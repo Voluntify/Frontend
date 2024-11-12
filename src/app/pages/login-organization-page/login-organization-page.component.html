@@ -3,21 +3,28 @@
         <h1>Inicia sesión</h1>
         <p>¡Bienvenido! Ingresa los datos del administrador de la organización para iniciar sesión en Voluntify.</p>
         <div class="login">
-            <form [formGroup]="loginOrganizationForm" (ngSubmit)="LoginOrganization()"></form>
+            <form [formGroup]="loginOrganizationForm" (ngSubmit)="LoginOrganization()">
 
             <!-- Campo de nombre -->
           <mat-form-field appearance="fill" class="custom-form-field">
             <mat-label class="nombre">Nombre de la organización</mat-label>
             <input matInput formControlName="nombre" required />
           </mat-form-field>
-  
-          <!-- Campo de contraseña -->
-          <mat-form-field appearance="fill" class="custom-form-field">
-            <mat-label class="password">Contraseña</mat-label>
-            <input matInput formControlName="contrasena" required />
-          </mat-form-field>
 
-            <button routerLink="/main">Iniciar sesión</button>
+          <!-- Campo de contraseña -->
+        <mat-form-field appearance="fill" class="custom-form-field">
+          <mat-label class="password">Contraseña</mat-label>
+          <input matInput formControlName="contrasena" required [type]="hide() ? 'password' : 'text'" />
+          <button
+            mat-icon-button matSuffix type="button" (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+            <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+
+            <!-- Botón de inicio de sesión -->
+          <button mat-raised-button color="primary" type="submit" [disabled]="loginOrganizationForm.invalid">Iniciar sesión</button>
+          </form>
+
             <p>¿No tienes una cuenta? <a [routerLink]="'/register-organization'" class="link">Registra a tu organización</a></p>
         </div>
     </div>

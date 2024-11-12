@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
@@ -18,12 +18,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatButtonModule,
     RouterLink,
     ReactiveFormsModule
-  ],
+    ],
   templateUrl: './login-organization-page.component.html',
   styleUrl: './login-organization-page.component.css'
 })
 export class LoginOrganizationPageComponent {
   loginOrganizationForm: FormGroup;
+
+  hide = signal(true);
+  clickEvent(event: MouseEvent) {
+    this.hide.set(!this.hide());
+    event.stopPropagation();
+  }
 
   constructor(
     private fb: FormBuilder,
