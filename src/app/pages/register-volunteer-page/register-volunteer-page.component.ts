@@ -61,6 +61,7 @@ export class RegisterVolunteerPageComponent {
         response => {
           this.snackBar.open('Usuario registrado exitosamente', 'Cerrar', { duration: 3000 });
           this.registerVolunForm.reset();
+          this.router.navigate(['/login-volunteer']);
         },
         error => {
           this.snackBar.open('Error al registrar el usuario', 'Cerrar', { duration: 3000 });

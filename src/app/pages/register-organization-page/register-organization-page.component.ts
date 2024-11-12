@@ -67,6 +67,7 @@ export class RegisterOrganizationPageComponent {
         response => {
           this.snackBar.open('Organizacion registrada exitosamente', 'Cerrar', { duration: 3000 });
           this.registerOrgForm.reset();
+          this.router.navigate(['/login-organization']);
         },
         error => {
           this.snackBar.open('Error al registrar la organizacion', 'Cerrar', { duration: 3000 });
