@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'register-organization', component: RegisterOrganizationPageComponent},
   { path: 'main', component: MainPageComponent},
   { path: 'volunteers', component: VolunteersPageComponent},
-  { path: 'organizations', component: OrganizationsPageComponent},
+  { path: 'organizations', component: OrganizationsPageComponent}
 ];
 
 bootstrapApplication(AppComponent, {
