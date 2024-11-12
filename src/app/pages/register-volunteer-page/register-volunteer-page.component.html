@@ -1,24 +1,47 @@
 <main>
-  <div class="container">
-    <h2>Registro de Usuario</h2>
-    <form [formGroup]="registerVolunForm" (ngSubmit)="registrarUsuario()">
+  <div class="register">
+      <h1>Regístrate</h1>
+      <form [formGroup]="registerVolunForm" (ngSubmit)="registrarUsuario()">
+
+          
+     
+    <!-- Campo del nombre -->
+    <mat-form-field appearance="fill" class="custom-form-field">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" required />
+      <!-- Validaciones -->
+      <mat-error *ngIf="registerVolunForm.get('nombre')?.invalid && (registerVolunForm.get('nombre')?.dirty || 
+      registerVolunForm.get('nombre')?.touched)">
+      {{ registerVolunForm.get('nombre')?.hasError('required') ? 'El nombre es obligatorio' : '' }}  
+      </mat-error>
+  </mat-form-field>
+
+  <!-- Campo del apellido -->
+  <mat-form-field appearance="fill" class="custom-form-field">
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="apellido" required />
+      <!-- Validaciones -->
+      <mat-error *ngIf="registerVolunForm.get('apellido')?.invalid && (registerVolunForm.get('apellido')?.dirty || 
+      registerVolunForm.get('apellido')?.touched)">
+      {{ registerVolunForm.get('apellido')?.hasError('required') ? 'El apellido es obligatorio' : '' }}  
+      </mat-error>
+  </mat-form-field>   
 
     <!-- Campo del correo -->
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="fill" class="custom-form-field">
         <mat-label>Correo Electrónico</mat-label>
         <input matInput formControlName="correo" required />
         
         <!-- Validaciones -->
         <mat-error *ngIf="registerVolunForm.get('correo')?.invalid && (registerVolunForm.get('correo')?.dirty || 
         registerVolunForm.get('correo')?.touched)">
-        {{ registerVolunForm.get('correo')?.hasError('required') ? 'El correo es obligatorio' : '' }}  
-        {{ registerVolunForm.get('correo')?.hasError('minlength') ? 'El correo debe tener minimo 10 caracteres' : '' }}  
+        {{ registerVolunForm.get('correo')?.hasError('required') ? 'El correo es obligatorio' : '' }}   
 
         </mat-error>
       </mat-form-field>
 
     <!-- Campo de la contraseña -->
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="fill" class="custom-form-field">
         <mat-label>Contraseña</mat-label>
         <input matInput formControlName="contrasena" required />
         <!-- Validaciones -->
@@ -28,46 +51,31 @@
         {{ registerVolunForm.get('contrasena')?.hasError('minlength') ? 'La contraseña debe tener minimo 6 caracteres' : '' }}  
         </mat-error>
       </mat-form-field>
-  
-     
-    <!-- Campo del nombre -->
-    <mat-form-field appearance="outline">
-        <mat-label>Nombre</mat-label>
-        <input matInput formControlName="nombre" required />
+    
+      <mat-form-field appearance="fill" class="custom-form-field">
+        <mat-label>Celular</mat-label>
+        <input matInput formControlName="telefono" type="tel" required />
         <!-- Validaciones -->
-        <mat-error *ngIf="registerVolunForm.get('nombre')?.invalid && (registerVolunForm.get('nombre')?.dirty || 
-        registerVolunForm.get('nombre')?.touched)">
-        {{ registerVolunForm.get('nombre')?.hasError('required') ? 'El nombre es obligatorio' : '' }}  
-        {{ registerVolunForm.get('nombre')?.hasError('minlength') ? 'El nombre debe tener minimo 10 caracteres' : '' }}  
-        </mat-error>
-    </mat-form-field>
-
-    <!-- Campo del apellido -->
-    <mat-form-field appearance="outline">
-        <mat-label>Apellido</mat-label>
-        <input matInput formControlName="apellido" required />
-        <!-- Validaciones -->
-        <mat-error *ngIf="registerVolunForm.get('apellido')?.invalid && (registerVolunForm.get('apellido')?.dirty || 
-        registerVolunForm.get('apellido')?.touched)">
-        {{ registerVolunForm.get('apellido')?.hasError('required') ? 'El apellido es obligatorio' : '' }}  
-        {{ registerVolunForm.get('apellido')?.hasError('minlength') ? 'El apellido debe tener minimo 10 caracteres' : '' }}  
-        </mat-error>
-    </mat-form-field>    
+        <mat-error *ngIf="registerVolunForm.get('telefono')?.invalid && (registerVolunForm.get('telefono')?.dirty || 
+        registerVolunForm.get('telefono')?.touched)">
+          {{ registerVolunForm.get('telefono')?.hasError('required') ? 'El telefono es obligatorio' : '' }}  
+          {{ registerVolunForm.get('telefono')?.hasError('minlength') ? 'El telefono debe tener 9 digitos' : '' }}
+          </mat-error>
+      </mat-form-field>    
 
     <!-- Campo de la direccion -->
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="fill" class="custom-form-field">
         <mat-label>Direccion</mat-label>
         <input matInput formControlName="direccion" required />
         <!-- Validaciones -->
         <mat-error *ngIf="registerVolunForm.get('direccion')?.invalid && (registerVolunForm.get('direccion')?.dirty || 
         registerVolunForm.get('direccion')?.touched)">
         {{ registerVolunForm.get('direccion')?.hasError('required') ? 'La direccion es obligatoria' : '' }}  
-        {{ registerVolunForm.get('direccion')?.hasError('minlength') ? 'La direccion debe tener minimo 10 caracteres' : '' }}  
         </mat-error>
     </mat-form-field>        
   
     <!-- Campo de la fecha -->
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="fill" class="custom-form-field">
         <mat-label>Fecha de Registro</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="fecha_registro" required />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -80,22 +88,11 @@
     </mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Telefono</mat-label>
-        <input matInput formControlName="telefono" type="tel" required />
-        <!-- Validaciones -->
-        <mat-error *ngIf="registerVolunForm.get('telefono')?.invalid && (registerVolunForm.get('telefono')?.dirty || 
-        registerVolunForm.get('telefono')?.touched)">
-          {{ registerVolunForm.get('telefono')?.hasError('required') ? 'El telefono es obligatorio' : '' }}  
-          {{ registerVolunForm.get('telefono')?.hasError('minlength') ? 'El telefono debe tener 9 digitos' : '' }}
-          </mat-error>
-
-      </mat-form-field>    
 
       <div class="button-group">
-      <button mat-raised-button color="primary" type="submit" [disabled]="registerVolunForm.invalid">Registrar</button>
-      <button mat-button color="warn" type="button" (click)="cancelar()">Cancelar</button>
-    </div>
+        <button mat-raised-button class="register-btn" type="submit" [disabled]="registerVolunForm.invalid">Crear cuenta</button>
+        <button mat-button class="cancel-btn" type="button" (click)="cancelar()">Cancelar</button>
+      </div>
     </form>
   </div>
 </main>

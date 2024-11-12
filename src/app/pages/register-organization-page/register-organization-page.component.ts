@@ -45,17 +45,17 @@ export class RegisterOrganizationPageComponent {
 
   {
   this.registerOrgForm = this.fb.group({
-    nombre: ['', [Validators.required, Validators.minLength(10)]],
+    nombre: ['', [Validators.required]],
     descripcion: ['', [Validators.required, Validators.minLength(10)]],
-    correo: ['', [Validators.required, Validators.minLength(10)]],
+    correo: ['', [Validators.required]],
     telefono: ['', [Validators.required, Validators.minLength(9)]],
-    direccion: ['', [Validators.required, Validators.minLength(10)]],
-    sitio_web: ['', [Validators.required, Validators.minLength(8)]],
+    direccion: ['', [Validators.required]],
+    sitio_web: ['', [Validators.required]],
     fecha_registro: ['', [Validators.required, this.fechaValida]],
     suscripcion_activa: [null, Validators.required],
     nivel_suscripcion : ['', Validators.required],
     contrasena: ['', [Validators.required, Validators.minLength(6)]],
-    rol: ['', [Validators.required, Validators.minLength(6)]],    
+    rol: ['', [Validators.required]],    
   });
 }
 
