@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Usuarios } from '../model/usuarios';
 import { Organizaciones } from '../model/organizaciones';
+import { User } from '../model/loginUser';
 
 @Injectable({
   providedIn: 'root'
@@ -26,4 +27,9 @@ export class VoluntifyService {
        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     });
     }  
+
+    //metodo para loguear usuario
+    login(user: User): Observable<{ token: string }> {
+      return this.http.post<{ token: string }>(`${this.apiUrl}/authenticate`, user);
+    }    
 }
