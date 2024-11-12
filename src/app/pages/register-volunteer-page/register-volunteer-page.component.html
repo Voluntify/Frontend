@@ -2,41 +2,40 @@
   <div class="register">
       <h1>Regístrate</h1>
       <form [formGroup]="registerVolunForm" (ngSubmit)="registrarUsuario()">
-
-          
      
-    <!-- Campo del nombre -->
-    <mat-form-field appearance="fill" class="custom-form-field">
-      <mat-label>Nombre</mat-label>
-      <input matInput formControlName="nombre" required />
-      <!-- Validaciones -->
-      <mat-error *ngIf="registerVolunForm.get('nombre')?.invalid && (registerVolunForm.get('nombre')?.dirty || 
-      registerVolunForm.get('nombre')?.touched)">
-      {{ registerVolunForm.get('nombre')?.hasError('required') ? 'El nombre es obligatorio' : '' }}  
-      </mat-error>
-  </mat-form-field>
+      <!-- Campo del nombre -->
+      <mat-form-field appearance="fill" class="custom-form-field">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" required />
+        <!-- Validaciones -->
+        <mat-error *ngIf="registerVolunForm.get('nombre')?.invalid && (registerVolunForm.get('nombre')?.dirty || 
+        registerVolunForm.get('nombre')?.touched)">
+        {{ registerVolunForm.get('nombre')?.hasError('required') ? 'El nombre es obligatorio' : '' }}  
+        {{ registerVolunForm.get('nombre')?.hasError('minlength') ? 'El nombre debe 3 letras minimo' : '' }}
+        </mat-error>
+    </mat-form-field>
 
-  <!-- Campo del apellido -->
-  <mat-form-field appearance="fill" class="custom-form-field">
-      <mat-label>Apellido</mat-label>
-      <input matInput formControlName="apellido" required />
-      <!-- Validaciones -->
-      <mat-error *ngIf="registerVolunForm.get('apellido')?.invalid && (registerVolunForm.get('apellido')?.dirty || 
-      registerVolunForm.get('apellido')?.touched)">
-      {{ registerVolunForm.get('apellido')?.hasError('required') ? 'El apellido es obligatorio' : '' }}  
-      </mat-error>
-  </mat-form-field>   
+    <!-- Campo del apellido -->
+    <mat-form-field appearance="fill" class="custom-form-field">
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="apellido" required />
+        <!-- Validaciones -->
+        <mat-error *ngIf="registerVolunForm.get('apellido')?.invalid && (registerVolunForm.get('apellido')?.dirty || 
+        registerVolunForm.get('apellido')?.touched)">
+        {{ registerVolunForm.get('apellido')?.hasError('required') ? 'El apellido es obligatorio' : '' }}  
+        {{ registerVolunForm.get('apellido')?.hasError('minlength') ? 'El apellido debe 4 letras minimo' : '' }}
+        </mat-error>
+    </mat-form-field>   
 
     <!-- Campo del correo -->
       <mat-form-field appearance="fill" class="custom-form-field">
         <mat-label>Correo Electrónico</mat-label>
-        <input matInput formControlName="correo" required />
-        
+        <input matInput formControlName="correo" required />    
         <!-- Validaciones -->
         <mat-error *ngIf="registerVolunForm.get('correo')?.invalid && (registerVolunForm.get('correo')?.dirty || 
         registerVolunForm.get('correo')?.touched)">
         {{ registerVolunForm.get('correo')?.hasError('required') ? 'El correo es obligatorio' : '' }}   
-
+        {{ registerVolunForm.get('correo')?.hasError('email') ? 'Este campo debe ser un correo' : '' }}   
         </mat-error>
       </mat-form-field>
 
@@ -52,16 +51,19 @@
         </mat-error>
       </mat-form-field>
     
+       <!-- Campo del telefono -->
       <mat-form-field appearance="fill" class="custom-form-field">
         <mat-label>Celular</mat-label>
         <input matInput formControlName="telefono" type="tel" required />
         <!-- Validaciones -->
         <mat-error *ngIf="registerVolunForm.get('telefono')?.invalid && (registerVolunForm.get('telefono')?.dirty || 
         registerVolunForm.get('telefono')?.touched)">
-          {{ registerVolunForm.get('telefono')?.hasError('required') ? 'El telefono es obligatorio' : '' }}  
-          {{ registerVolunForm.get('telefono')?.hasError('minlength') ? 'El telefono debe tener 9 digitos' : '' }}
-          </mat-error>
+          {{ registerVolunForm.get('telefono')?.hasError('required') ? 'El teléfono es obligatorio' : '' }}  
+          {{ registerVolunForm.get('telefono')?.hasError('minlength') ? 'El teléfono debe tener 9 dígitos' : '' }}
+          {{ registerVolunForm.get('telefono')?.hasError('maxlength') ? 'El teléfono debe tener máximo 9 dígitos' : '' }}
+        </mat-error>
       </mat-form-field>    
+      
 
     <!-- Campo de la direccion -->
     <mat-form-field appearance="fill" class="custom-form-field">
@@ -71,6 +73,7 @@
         <mat-error *ngIf="registerVolunForm.get('direccion')?.invalid && (registerVolunForm.get('direccion')?.dirty || 
         registerVolunForm.get('direccion')?.touched)">
         {{ registerVolunForm.get('direccion')?.hasError('required') ? 'La direccion es obligatoria' : '' }}  
+        {{ registerVolunForm.get('direccion')?.hasError('minlength') ? 'La direccion debe tener 10 caracteres minimo' : '' }}
         </mat-error>
     </mat-form-field>        
   

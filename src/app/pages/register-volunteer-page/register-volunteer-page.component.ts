@@ -44,13 +44,13 @@ export class RegisterVolunteerPageComponent {
 
   {
     this.registerVolunForm = this.fb.group({
-      correo: ['', [Validators.required]],
+      correo: ['', [Validators.required, Validators.email]],
       contrasena: ['', [Validators.required, Validators.minLength(6)]],
-      nombre: ['', [Validators.required]],
-      apellido: ['', [Validators.required]],
-      direccion: ['', [Validators.required]],
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
+      apellido: ['', [Validators.required,  Validators.minLength(4)]],
+      direccion: ['', [Validators.required, Validators.minLength(10)]],
       fecha_registro: ['', [Validators.required, this.fechaValida]],
-      telefono: ['', [Validators.required, Validators.minLength(9)]],
+      telefono: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]]
     });
   }
 
@@ -79,6 +79,6 @@ export class RegisterVolunteerPageComponent {
   }
 
   cancelar() {
-    this.router.navigate(['/register']);
+    this.router.navigate(['/start']);
   }
 }
