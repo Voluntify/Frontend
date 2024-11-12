@@ -38,7 +38,7 @@ export class LoginVolunteerPageComponent {
 
   LoginVolunteer() {
     if (this.loginVolunteerForm.valid) {
-      this.voluntifyService.login(this.loginVolunteerForm.value).subscribe(
+      this.voluntifyService.loginUser(this.loginVolunteerForm.value).subscribe(
         response => {
           this.router.navigate(['/main']),
           this.snackBar.open('Inicio de sesión exitoso', 'Cerrar', { duration: 3000 });

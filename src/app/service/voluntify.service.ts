@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { Usuarios } from '../model/usuarios';
 import { Organizaciones } from '../model/organizaciones';
-import { User } from '../model/loginUser';
+import { Login} from '../model/login';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,12 @@ export class VoluntifyService {
     }  
 
     //metodo para loguear usuario
-    login(user: User): Observable<{ token: string }> {
+    loginUser(user: Login): Observable<{ token: string }> {
       return this.http.post<{ token: string }>(`${this.apiUrl}/authenticate`, user);
     }    
+
+    //metodo para loguear organizacion
+    loginOrg(user: Login): Observable<{ token: string }> {
+      return this.http.post<{ token: string }>(`${this.apiUrl}/authenticate`, user);
+    } 
 }
