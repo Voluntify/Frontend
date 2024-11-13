@@ -1,4 +1,4 @@
-/* Estilos generales */
+/* 
 * {
     font-family: 'Poppins' !important;
     margin: 0;
@@ -16,7 +16,7 @@ html {
     overflow: hidden;
 }
 
-/* Estilo principal */
+/* Estilo principal 
 main {
     display: flex;
     align-items: center;
@@ -116,7 +116,7 @@ button:hover {
 }
 
 
-/* Estilos responsive */
+/* Estilos responsive 
 @media (max-width: 768px) {
     main {
         flex-direction: column;
@@ -143,3 +143,17 @@ button:hover {
         margin-top: 1.5rem;
     }
 }
+*/
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin: 1rem;
+  }

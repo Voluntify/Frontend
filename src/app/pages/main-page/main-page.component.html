@@ -1,4 +1,4 @@
-<app-navbar-main-page />
+<!-- <app-navbar-main-page />
 
 <main>
     <div class="content">
@@ -48,4 +48,16 @@
             </mat-card>
         </div>
     </div>
+</main> -->
+
+<main class="content">
+  <h2>Organizaciones</h2>
+
+  <div *ngIf="token">
+    <h3>Esto es para probar nomas, TokenJWT:</h3>
+    <p>{{ token }}</p>
+  </div>
+  
+  <app-cardsmain/>
 </main>
+
