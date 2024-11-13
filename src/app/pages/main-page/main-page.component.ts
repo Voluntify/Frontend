@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { VoluntifyService } from '../../service/voluntify.service';
-import { CommonModule } from '@angular/common';
-import { Voluntariados } from '../../model/voluntariados';
+import { CommonModule} from '@angular/common';
+import { voluntariadosTotal } from '../../model/voluntariadosTotal';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { NavbarMainPageComponent } from "../navbar-main-page/navbar-main-page.component";
@@ -14,33 +14,28 @@ imports: [
     MatButtonModule,
     CommonModule,
     NavbarMainPageComponent
-],
+  ],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.css'
 })
 export class MainPageComponent implements OnInit{
   token: string | null = null;
-  voluntariados: Voluntariados[] = [];
+  voluntariados: voluntariadosTotal[] = [];
 
   constructor(
     private voluntifyService: VoluntifyService
   ) {}
 
   ngOnInit(): void {
-    //para ver el token
-    this.viewJWTToken();
     //se obtienen todos los voluntariados
     this.voluntifyService.getAllVoluntariados().subscribe(
-      (data: Voluntariados[]) => {
-        this.voluntariados = data; 
+      (data: voluntariadosTotal[]) => {
+        console.log('Datos recibidos desde el backend:', data);  // Aquí verificamos los datos
+        this.voluntariados = data;
       },
       (error) => {
         console.error('Error al cargar los voluntariados', error);
       }
     );
-  }
-
-  viewJWTToken() {
-    this.token = this.voluntifyService.getToken();
   }
 }

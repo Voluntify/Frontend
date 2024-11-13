@@ -1,9 +1,7 @@
-export interface Voluntariados {
+export interface voluntariadosTotal {
     codigo?: number;
-    titulo: String;
+    nombre: String;
     descripcion: String;
-    fecha_inicio: Date;
-    fecha_fin: Date;
     ubicacion: String;
     requisitos: String;
 }    
