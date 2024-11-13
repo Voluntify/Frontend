@@ -1,8 +1,25 @@
 <app-navbar-main-page />
 
-<main>
-    <div class = "content">
-        <div class="actions">
+<main class="content">
+
+    <h3>Todos los voluntariados</h3>
+  
+    <div class="row">
+        <div class="col-md-4" *ngFor="let voluntariado of voluntariados">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ voluntariado.titulo }}</h5>
+                    <h1 class="card-text">{{ voluntariado.descripcion }}</h1>
+                    <p><strong>Ubicación:</strong> {{ voluntariado.ubicacion }}</p>
+                    <p><strong>Fecha inicio:</strong> {{ voluntariado.fecha_inicio | date: 'shortDate' }}</p>
+                    <p><strong>Fecha fin:</strong> {{ voluntariado.fecha_fin | date: 'shortDate' }}</p>
+                    <button routerLink="/volunteers">Conoce más</button>
+                </div>
+            </div>
         </div>
     </div>
+  
 </main>
+
+
+
