@@ -49,7 +49,7 @@ export class LoginVolunteerPageComponent {
     if (this.loginVolunteerForm.valid) {
       this.voluntifyService.loginUser(this.loginVolunteerForm.value).subscribe(
         response => {
-          if (response && response.jwttoken) {
+          if (response.jwttoken) {
             //almacena el token en la variable token
             this.token = response.jwttoken;
             //almacena el token en el servicio en el localstorage

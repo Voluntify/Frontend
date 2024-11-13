@@ -50,7 +50,7 @@ export class LoginOrganizationPageComponent {
     if (this.loginOrganizationForm.valid) {
       this.voluntifyService.loginUser(this.loginOrganizationForm.value).subscribe(
         response => {
-          if (response && response.jwttoken) {
+          if (response.jwttoken) {
             //almacena el token en la variable token
             this.token = response.jwttoken;
             //almacena el token en el servicio en el localstorage

@@ -1,10 +1,10 @@
 import { Component, OnInit} from '@angular/core';
 import { VoluntifyService } from '../../service/voluntify.service';
-import { CommonModule} from '@angular/common';
-import { voluntariadosTotal } from '../../model/voluntariadosTotal';
+import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { NavbarMainPageComponent } from "../navbar-main-page/navbar-main-page.component";
+import { voluntariadosTotal } from '../../model/voluntariadosTotal';
 
 @Component({
   selector: 'app-main-page',
@@ -14,7 +14,7 @@ imports: [
     MatButtonModule,
     CommonModule,
     NavbarMainPageComponent
-  ],
+],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.css'
 })
@@ -30,8 +30,7 @@ export class MainPageComponent implements OnInit{
     //se obtienen todos los voluntariados
     this.voluntifyService.getAllVoluntariados().subscribe(
       (data: voluntariadosTotal[]) => {
-        console.log('Datos recibidos desde el backend:', data);  // Aquí verificamos los datos
-        this.voluntariados = data;
+        this.voluntariados = data; 
       },
       (error) => {
         console.error('Error al cargar los voluntariados', error);
