@@ -157,3 +157,13 @@ button:hover {
     font-size: 2rem;
     margin: 1rem;
   }
+
+.card {
+    margin-bottom: 20px;
+  }
+  
+.card-img-top {
+    max-height: 180px;
+    object-fit: cover;
+  }
+  

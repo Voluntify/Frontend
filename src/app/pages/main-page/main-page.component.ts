@@ -1,13 +1,16 @@
 import { Component, OnInit} from '@angular/core';
-import { CardsmainComponent } from "../cardsmain/cardsmain.component";
 import { VoluntifyService } from '../../service/voluntify.service';
 import { CommonModule } from '@angular/common';
+import { Voluntariados } from '../../model/voluntariados';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-main-page',
   standalone: true,
 imports: [
-  CardsmainComponent,
+  MatCardModule,
+  MatButtonModule, 
   CommonModule
 ],
   templateUrl: './main-page.component.html',
@@ -15,11 +18,24 @@ imports: [
 })
 export class MainPageComponent implements OnInit{
   token: string | null = null;
+  voluntariados: Voluntariados[] = [];
 
-  constructor(private voluntifyService: VoluntifyService) {}
+  constructor(
+    private voluntifyService: VoluntifyService
+  ) {}
 
   ngOnInit(): void {
+    //para ver el token
     this.viewJWTToken();
+    //se obtienen todos los voluntariados
+    this.voluntifyService.getAllVoluntariados().subscribe(
+      (data: Voluntariados[]) => {
+        this.voluntariados = data; 
+      },
+      (error) => {
+        console.error('Error al cargar los voluntariados', error);
+      }
+    );
   }
 
   viewJWTToken() {

@@ -58,6 +58,21 @@
     <p>{{ token }}</p>
   </div>
   
-  <app-cardsmain/>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let voluntariado of voluntariados">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{ voluntariado.titulo }}</h5>
+          <p class="card-text">{{ voluntariado.descripcion }}</p>
+          <p><strong>Ubicación:</strong> {{ voluntariado.ubicacion }}</p>
+          <p><strong>Fecha inicio:</strong> {{ voluntariado.fecha_inicio | date: 'shortDate' }}</p>
+          <p><strong>Fecha fin:</strong> {{ voluntariado.fecha_fin | date: 'shortDate' }}</p>
+          <p><strong>Requisitos:</strong> {{ voluntariado.requisitos }}</p>
+          <a href="#" class="btn btn-primary">Ver más</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 </main>
 
