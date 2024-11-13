@@ -50,25 +50,25 @@
     </div>
 </main> -->
 
-<main class="content">
-  <h2>Organizaciones</h2>
 
-  <div *ngIf="token">
-    <h3>Esto es para probar nomas, TokenJWT:</h3>
-    <p>{{ token }}</p>
+ <app-navbar-main-page />
+<main class="content">
+
+  <div class="image">
+    <img src="main.jpg" alt="main">
   </div>
+  <h3>Últimas novedades</h3>
   
   <div class="row">
     <div class="col-md-4" *ngFor="let voluntariado of voluntariados">
-      <div class="card" style="width: 18rem;">
+      <div class="card">
         <div class="card-body">
           <h5 class="card-title">{{ voluntariado.titulo }}</h5>
-          <p class="card-text">{{ voluntariado.descripcion }}</p>
+          <h1 class="card-text">{{ voluntariado.descripcion }}</h1>
           <p><strong>Ubicación:</strong> {{ voluntariado.ubicacion }}</p>
           <p><strong>Fecha inicio:</strong> {{ voluntariado.fecha_inicio | date: 'shortDate' }}</p>
           <p><strong>Fecha fin:</strong> {{ voluntariado.fecha_fin | date: 'shortDate' }}</p>
-          <p><strong>Requisitos:</strong> {{ voluntariado.requisitos }}</p>
-          <a href="#" class="btn btn-primary">Ver más</a>
+          <button routerLink="/volunteers">Conoce más</button>
         </div>
       </div>
     </div>

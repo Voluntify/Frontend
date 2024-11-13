@@ -4,14 +4,16 @@ import { CommonModule } from '@angular/common';
 import { Voluntariados } from '../../model/voluntariados';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { NavbarMainPageComponent } from "../navbar-main-page/navbar-main-page.component";
 
 @Component({
   selector: 'app-main-page',
   standalone: true,
 imports: [
-  MatCardModule,
-  MatButtonModule, 
-  CommonModule
+    MatCardModule,
+    MatButtonModule,
+    CommonModule,
+    NavbarMainPageComponent
 ],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.css'

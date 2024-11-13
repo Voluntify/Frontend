@@ -1,11 +1,30 @@
 <mat-toolbar>
-        <span>LOGO</span>
+        <span>VOLUNTIFY</span>
         <span class="example-spacer"></span>
         <div class="navbar">
             <button routerLink="/volunteers" class="volunteers-btn">Voluntariados</button>
             <button routerLink="/organizations" class="organizations-btn">Organizaciones</button>
-            <button mat-icon-button aria-label="menu icon">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu">
                 <mat-icon>menu</mat-icon>
-            </button>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/profile-volunteer">
+                  <mat-icon>person</mat-icon>
+                  <span>Ver perfil</span>
+                </button>
+                <button mat-menu-item routerLink="/certificates">
+                  <mat-icon>remove_red_eye</mat-icon>
+                  <span>Ver certificados</span>
+                </button>
+                <button mat-menu-item routerLink="/settings-volunteer">
+                  <mat-icon>settings</mat-icon>
+                  <span>Configurar perfil</span>
+                </button>
+                <button mat-menu-item routerLink="/start">
+                    <mat-icon>logout</mat-icon>
+                    <span>Salir</span>
+                </button>
+              </mat-menu>
+              
         </div>
 </mat-toolbar>

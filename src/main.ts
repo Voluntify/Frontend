@@ -17,6 +17,9 @@ import { LoginOrganizationPageComponent } from './app/pages/login-organization-p
 import { MainPageComponent } from './app/pages/main-page/main-page.component';
 import { VolunteersPageComponent } from './app/pages/volunteers-page/volunteers-page.component';
 import { OrganizationsPageComponent } from './app/pages/organizations-page/organizations-page.component';
+import { ProfileVolunteerPageComponent } from './app/pages/profile-volunteer-page/profile-volunteer-page.component';
+import { CertificatesPageComponent } from './app/pages/certificates-page/certificates-page.component';
+import { SettingsVolunteerPageComponent } from './app/pages/settings-volunteer-page/settings-volunteer-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'start', pathMatch: 'full' },
@@ -31,7 +34,10 @@ const routes: Routes = [
   { path: 'register-organization', component: RegisterOrganizationPageComponent},
   { path: 'main', component: MainPageComponent},
   { path: 'volunteers', component: VolunteersPageComponent},
-  { path: 'organizations', component: OrganizationsPageComponent}
+  { path: 'organizations', component: OrganizationsPageComponent},
+  { path: 'profile-volunteer', component: ProfileVolunteerPageComponent},
+  { path: 'certificates', component: CertificatesPageComponent},
+  { path: 'settings-volunteer', component: SettingsVolunteerPageComponent},
 ];
 
 bootstrapApplication(AppComponent, {
