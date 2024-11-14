@@ -60,6 +60,17 @@ export class VoluntifyService {
         'Authorization': `Bearer ${token}` })
     });
     }
+    //metodo para obtener todos las organizaciones
+    getAllOrganizaciones(){
+      const token = localStorage.getItem('token');
+      //se retorna los voluntariados si el token enviado es correcto
+      return this.http.get<any>(`${this.apiUrl}/api/user/VerOrganizacionesTodos`, { headers: new HttpHeaders({
+        //se envia el token como header
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+    });
+
+    }
 
     // Método para guardar el nombre del voluntariado en localStorage, para buscar por nombre
     setNombre(name: string){
@@ -88,5 +99,22 @@ export class VoluntifyService {
           'Authorization': `Bearer ${token}`
         })
        });
+    }
+
+    getOrganizacionesByName(){
+
+      const token = localStorage.getItem('token')
+
+      const name = this.getNombre();
+
+      return this.http.get<any>(`${this.apiUrl}/api/user/VerOrganizacionesPorNombre`, {
+        
+        params: new HttpParams().set('name', name || ''),
+
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+      }) 
     }
 }
