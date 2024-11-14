@@ -72,6 +72,18 @@ export class VoluntifyService {
     });
     }
 
+    //metodo para obtener todos las organizaciones
+    getAllOrganizaciones(){
+      const token = localStorage.getItem('token');
+      //se retorna los voluntariados si el token enviado es correcto
+      return this.http.get<any>(`${this.apiUrl}/api/user/VerOrganizacionesTodos`, { headers: new HttpHeaders({
+        //se envia el token como header
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+    });
+
+    }
+
     // Método para guardar el nombre del voluntariado en localStorage, para buscar por nombre
     setNombreABuscar(name: string){
       this.name = name;
@@ -87,9 +99,8 @@ export class VoluntifyService {
     getVoluntariadosByName(){
       //se almacena en la constante token el token del localstorage
       const token = localStorage.getItem('token');
-      //se almacena en la constante name el name del localstorage con la funcion getNombre
+      //se almacena en la constante name el name del localstorage con la funcion getNombreABuscar
       var name = this.getNombreABuscar();
-    
       return this.http.get<any>(`${this.apiUrl}/api/user/VerVoluntariadosPorNombre`, { 
         //se envia el nombre como parametro
         params: new HttpParams().set('name', name || ''), 
@@ -101,13 +112,32 @@ export class VoluntifyService {
        });
     }
 
+    //metodo para obtener el perfil del usuario
     obtenerPerfil(): Observable<any> {
       const token = localStorage.getItem('token');
       var name = this.getUsername();
-      return this.http.get<any>(`${this.apiUrl}/api/user/perfil`, {  params: new HttpParams().set('name', name || ''), headers: new HttpHeaders({
+      return this.http.get<any>(`${this.apiUrl}/api/user/perfil`, {  
+        params: new HttpParams().set('name', name || ''), headers: new HttpHeaders({
         //se envia el token como header
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}` })
     });
+    }
+
+    //metodo para buscar organizaciones por nombre
+    getOrganizacionesByName(){
+      //se almacena en la constante token el token del localstorage
+      const token = localStorage.getItem('token')
+      //se almacena en la constante name el name del localstorage con la funcion getNombreABuscar
+      const name = this.getNombreABuscar();
+      return this.http.get<any>(`${this.apiUrl}/api/user/VerOrganizacionesPorNombre`, {
+        //se envia el nombre como parametro
+        params: new HttpParams().set('name', name || ''),
+        //se envia el token como header
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+      }) 
     }
 }
