@@ -1,1 +1,39 @@
-<p>organization-page works!</p>
+<main class="content">
+    <h3>Info de la organizacion</h3>
+    
+    <div class="row">
+      <div *ngFor="let organizaciones of organizaciones">
+        <mat-card class="card" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>Nombre de la organizacion: {{ organizaciones.nombre }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Descripción: {{ organizaciones.descripcion }}</p>
+            <p>Codigo: {{ organizaciones.codigo }}</p>
+            <p>Ubicación: {{ organizaciones.correo }}</p>
+            <p>Ubicación: {{ organizaciones.telefono }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <h3>Voluntariados de su organizacion</h3>
+    <div class="row">
+        <div *ngFor="let voluntariados of voluntariados">
+          <mat-card class="card" appearance="outlined">
+            <mat-card-header>
+              <mat-card-title>Nombre: {{ voluntariados.titulo }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>Descripción: {{ voluntariados.descripcion }}</p>
+              <p>Codigo: {{ voluntariados.fecha_inicio }}</p>
+              <p>Ubicación: {{ voluntariados.fecha_fin }}</p>
+              <p>Ubicación: {{ voluntariados.ubicacion }}</p>
+              <p>Ubicación: {{ voluntariados.ubicacion }}</p>
+              <p>Ubicación: {{ voluntariados.requisitos }}</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+  
+  </main>
