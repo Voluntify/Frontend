@@ -4,7 +4,6 @@ import { Observable, tap } from 'rxjs';
 import { Usuarios } from '../model/usuarios';
 import { Organizaciones } from '../model/organizaciones';
 import { Login} from '../model/login';
-import { voluntariadosTotal } from '../model/voluntariadosTotal';
 
 @Injectable({
   providedIn: 'root'
@@ -112,18 +111,6 @@ export class VoluntifyService {
        });
     }
 
-    //metodo para obtener el perfil del usuario
-    obtenerPerfil(): Observable<any> {
-      const token = localStorage.getItem('token');
-      var name = this.getUsername();
-      return this.http.get<any>(`${this.apiUrl}/api/user/perfil`, {  
-        params: new HttpParams().set('name', name || ''), headers: new HttpHeaders({
-        //se envia el token como header
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}` })
-    });
-    }
-
     //metodo para buscar organizaciones por nombre
     getOrganizacionesByName(){
       //se almacena en la constante token el token del localstorage
@@ -139,5 +126,61 @@ export class VoluntifyService {
           'Authorization': `Bearer ${token}`
         })
       }) 
+    }
+
+    //metodo para obtener el perfil del usuario
+    obtenerPerfil(): Observable<any> {
+      const token = localStorage.getItem('token');
+      var name = this.getUsername();
+      return this.http.get<any>(`${this.apiUrl}/api/user/perfil`, {  
+        //se envia el nombre como parametro
+        params: new HttpParams().set('name', name || ''), 
+        headers: new HttpHeaders({
+        //se envia el token como header
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+    });
+    }
+
+    //metodo para obtener habilidades del usuario
+    obtenerHabilidadesPorPerfil(): Observable<any> {
+      const token = localStorage.getItem('token');
+      var name = this.getUsername();
+      return this.http.get<any>(`${this.apiUrl}/api/user/HabilidadesPorPerfil`, {  
+        //se envia el nombre como parametro
+        params: new HttpParams().set('name', name || ''), 
+        headers: new HttpHeaders({
+        //se envia el token como header
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+    });
+    }
+
+    //metodo para obtener intereses del usuario
+    obtenerInteresesPorPerfil(): Observable<any> {
+      const token = localStorage.getItem('token');
+      var name = this.getUsername();
+      return this.http.get<any>(`${this.apiUrl}/api/user/InteresesPorPerfil`, {  
+        //se envia el nombre como parametro
+        params: new HttpParams().set('name', name || ''), 
+        headers: new HttpHeaders({
+        //se envia el token como header
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+    });
+    }
+
+    //metodo para obtener voluntariados realizados del usuario
+    obtenerVoluntariadosRealizadosorPerfil(): Observable<any> {
+      const token = localStorage.getItem('token');
+      var name = this.getUsername();
+      return this.http.get<any>(`${this.apiUrl}/api/user/VoluntariadosRealizadosPorUsuario`, {  
+        //se envia el nombre como parametro
+        params: new HttpParams().set('name', name || ''), 
+        headers: new HttpHeaders({
+        //se envia el token como header
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+    });
     }
 }

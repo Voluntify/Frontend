@@ -55,6 +55,7 @@ export class LoginOrganizationPageComponent {
             this.token = response.jwttoken;
             //almacena el token en el servicio en el localstorage
             this.voluntifyService.setToken(response.jwttoken); 
+            this.voluntifyService.setUsername(this.loginOrganizationForm.value.nombre);
             //redirige a la pagina principal "main"
             this.router.navigate(['/main']);
             //muestra un mensaje de inicio de sesion exitoso

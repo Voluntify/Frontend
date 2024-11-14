@@ -1,20 +1,90 @@
-<div class="perfil-container">
+<main>
+<div class="container">
     <h2>Mi Perfil</h2>
+    
+    <!-- Botón de Configurar Perfil -->
+    <div class="config-button">
+      <button mat-raised-button color="primary" type="submit"><a [routerLink]="'/main'" class="link">Configurar perfil</a></button>
+    </div>
   
     <div class="row">
-        <div *ngFor="let usuario of usuario">
-            <div class="card" appearance="outlined">
+      <!-- Información Personal -->
+      <div *ngFor="let usuario of usuario">
+        <div class="card" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>{{ usuario.nombre }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ usuario.apellido }}</p>
+            <p>{{ usuario.telefono }}</p>
+            <p>{{ usuario.correo }}</p>
+            <p>{{ usuario.direccion }}</p>
+          </mat-card-content>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Habilidades -->
+    <div class="row">
+        <h3>Habilidades</h3>
+        <div *ngFor="let habilidad of habilidad">
+          <div class="card" appearance="outlined">
             <mat-card-header>
-                <mat-card-title>{{ usuario.nombre }}</mat-card-title>
+                <mat-card-title>{{ habilidad.habilidad_nombre }}</mat-card-title>
             </mat-card-header>
-            <mat-card-content>
-                <p>{{ usuario.apellido }}</p>
-                <p>{{ usuario.telefono }}</p>
-                <p>{{ usuario.correo }}</p>
-                <p>{{ usuario.direccion }}</p>
-              </mat-card-content>
-            </div>
+          </div>
+        </div>
+      </div>
+  
+
+    <!-- Intereses -->
+    <div class="row">
+        <h3>Intereses</h3>
+        <div *ngFor="let interes of interes">
+          <div class="card" appearance="outlined">
+            <mat-card-header>
+                <mat-card-title>{{ interes.interes_nombre }}</mat-card-title>
+            </mat-card-header>
+          </div>
         </div>
     </div>
-  </div>
+
+    <!-- Voluntariados Realizados -->
+    <div class="row">
+      <h3>Voluntariados Realizados</h3>
+      <div *ngFor="let voluntariados of voluntariados">
+        <div class="card" appearance="outlined">
+          <mat-card-header>
+              <mat-card-title>{{ voluntariados.titulo }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Descripción: {{ voluntariados.descripcion }}</p>
+          </mat-card-content>
+        </div>
+      </div>
+    </div>    
+
+
+    <!-- Intereses
+    <div class="row">
+      <h3>Intereses</h3>
+      <div class="interests-list">
+        <img *ngFor="let interes of getIntereses()" [src]="interes.icono" [alt]="interes.nombre" class="interest-icon">
+      </div>
+    </div> -->
   
+    <!-- Voluntariados Realizados
+    <div class="row">
+      <h3>Voluntariados Realizados</h3>
+      <div class="volunteer-cards">
+        <mat-card *ngFor="let voluntariado of getVoluntariadosRealizados()" class="volunteer-card" appearance="outlined">
+          <img mat-card-image [src]="voluntariado.imagen" alt="Imagen del voluntariado">
+          <mat-card-content>
+            <h4>{{ voluntariado.nombre }}</h4>
+            <p>{{ voluntariado.categoria }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div> -->
+  </div>
+</main>
