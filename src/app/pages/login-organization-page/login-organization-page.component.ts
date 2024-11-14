@@ -56,7 +56,7 @@ export class LoginOrganizationPageComponent {
             //almacena el token en el servicio en el localstorage
             this.voluntifyService.setToken(response.jwttoken); 
             //redirige a la pagina principal "main"
-            this.router.navigate(['/main']);
+            this.router.navigate(['/profile-organization']);
             //muestra un mensaje de inicio de sesion exitoso
             this.snackBar.open('Inicio de sesión exitoso', 'Cerrar', { duration: 3000 });
           } else {

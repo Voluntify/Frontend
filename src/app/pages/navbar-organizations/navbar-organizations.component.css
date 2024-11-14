@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+mat-toolbar {
+    background-color: #FAF0FB;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    font-family: 'Poppins';
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+button.mat-icon-button {
+    color: black;
+}
+
+button {
+    background-color: transparent;
+    font-family: Poppins;
+    color: black;
+    font-weight: 550;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+

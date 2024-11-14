@@ -57,4 +57,15 @@ export class VoluntifyService {
         'Authorization': `Bearer ${token}` })
     });
     }
+
+        //metodo para obtener todos las organizaciones
+    getAllOrganizaciones() {
+      //se almacena en la constante token el token del localstorage
+      const token = localStorage.getItem('token'); 
+      //se retorna las organizaciones si el token enviado es correcto
+      return this.http.get<any>(`${this.apiUrl}/api/user/VerOrganizacionesTodos`, { headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+    });
+    }
 }
