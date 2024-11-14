@@ -377,4 +377,32 @@ export class VoluntifyService {
     obtenerIntereses(): Observable<any> {
       return this.http.get<any>(`${this.apiUrl}/api/VerIntereses`);
     }
+
+    //metodo para obtener la informacion del main de la organizacion
+    obtenerInfoOrganizationMain(): Observable<any> {
+      const token = localStorage.getItem('token');
+      var name = this.getUsername();
+      return this.http.get<any>(`${this.apiUrl}/api/admin/VerOrganizacionesPorNombre`, {  
+        //se envia el nombre como parametro
+        params: new HttpParams().set('name', name || ''), 
+        headers: new HttpHeaders({
+        //se envia el token como header
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+    });
+    }
+
+    //metodo para obtener los voluntariados de una organizacion
+    obtenerVoluntariadosPorOrganizacion(): Observable<any> {
+      const token = localStorage.getItem('token');
+      var name = this.getUsername();
+      return this.http.get<any>(`${this.apiUrl}/api/admin/VerVoluntariadosPorOrganizacion`, {  
+        //se envia el nombre como parametro
+        params: new HttpParams().set('name', name || ''), 
+        headers: new HttpHeaders({
+        //se envia el token como header
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+    });
+    }
 }
