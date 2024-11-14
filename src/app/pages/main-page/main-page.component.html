@@ -17,7 +17,7 @@
           <p>Ubicación: {{ voluntariado.ubicacion }}</p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button routerLink="/volunteer-selected-page" class="custom-button">Conoce más</button>
+          <button mat-button (click)="ConocerMas(voluntariado)" class="custom-button">Conoce más</button>
         </mat-card-actions>
       </mat-card>
     </div>

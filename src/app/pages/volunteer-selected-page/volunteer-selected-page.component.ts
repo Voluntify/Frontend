@@ -7,9 +7,8 @@ import { VoluntifyService } from '../../service/voluntify.service';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { VoluntariadosPorUsuario } from '../../model/voluntariadosPorUsuario';
 import { NavbarMainPageComponent } from '../navbar-main-page/navbar-main-page.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { voluntariadosSeleccionado } from '../../model/voluntariadoSeleccionado';
 import { UsuarioCodigo } from '../../model/usuarioCodigo';
 
@@ -37,11 +36,11 @@ export class VolunteerSelectedPageComponent {
   userCode: UsuarioCodigo[] = [];
 
   constructor(
-    private voluntifyService: VoluntifyService
-  ) {}
+    private voluntifyService: VoluntifyService,
+    ) {}
 
   ngOnInit(): void {
-    //se obtienen todos el voluntariado
+    //se obtiene el voluntariado
     this.obtenerVoluntariadoSeleccionado();
 
     //se obtiene el codigo de usuario
@@ -49,6 +48,7 @@ export class VolunteerSelectedPageComponent {
       (data) => { 
         if (data) {
           this.userCode = data; 
+          //usercode que esta en localstorage se usa para la inscripcion
           this.voluntifyService.setUserCode(this.userCode[0].codigo);
         }
       },
@@ -58,10 +58,16 @@ export class VolunteerSelectedPageComponent {
     );
   }
 
+
   obtenerVoluntariadoSeleccionado(){
     this.voluntifyService.obtenerVoluntariadoSeleccionado().subscribe(
       (data: voluntariadosSeleccionado[]) => {
-        this.voluntariado = data; 
+        //se almacena el voluntariado seleccionado
+        this.voluntariado = data;
+        if (this.voluntariado) {
+          //se almacena el codigo del voluntariado seleccionado
+            this.voluntifyService.setIdVoluntariado(this.voluntariado[0].codigo);
+        }
       },
       (error) => {
         console.error('Error al cargar el voluntariado', error);

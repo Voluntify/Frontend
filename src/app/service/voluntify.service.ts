@@ -4,6 +4,7 @@ import { Observable, tap } from 'rxjs';
 import { Usuarios } from '../model/usuarios';
 import { Organizaciones } from '../model/organizaciones';
 import { Login} from '../model/login';
+import { inscripcionVoluntariado } from '../model/inscripcionVoluntariado';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class VoluntifyService {
   public token: string | null = null;
   public name: string | null = null;
   public userCode: number | null = null;  
+  public idVoluntariado: number | null = null;
 
   private apiUrl = 'http://localhost:8080'; // URL del backend
 
@@ -38,7 +40,7 @@ export class VoluntifyService {
      });
     }
 
-    //metodo para obtener el nombre del usuario
+    //metodo para almacenar el nombre del usuario
     setUsername(name: string) {
       this.name = name;
       localStorage.setItem('username', name);
@@ -49,7 +51,7 @@ export class VoluntifyService {
       return localStorage.getItem('username');
     }
 
-    //metodo para guardar token en localstorage
+    //metodo para almacenar token en localstorage
     setToken(token: string) {
       this.token = token;
       localStorage.setItem('token', token);
@@ -224,8 +226,38 @@ export class VoluntifyService {
     });
     }
 
+    //metodo para almacenar el codigo del usuario en localstorage
     setUserCode(userCode: number) {
       this.userCode = userCode;
       localStorage.setItem('userCode', userCode.toString());
     }
+
+    //metodo para obtener el codigo del usuario
+    getUserCode(): number | null {
+      return localStorage.getItem('userCode') ? parseInt(localStorage.getItem('userCode') || '') : null;
+    }
+
+    //metodo para almacenar el id del voluntariado
+    setIdVoluntariado(idVoluntariado: number) {
+      this.idVoluntariado = idVoluntariado;
+      localStorage.setItem('idVoluntariado', idVoluntariado.toString());
+    }
+
+    //metodo para obtener el id del voluntariado
+    getIdVoluntariado(): number | null {
+      return localStorage.getItem('idVoluntariado') ? parseInt(localStorage.getItem('idVoluntariado') || '') : null;
+    }
+
+    //metodo para registrar una inscripcion 
+   addInscripcion(inscripcion: inscripcionVoluntariado): Observable<inscripcionVoluntariado> {
+    const token = localStorage.getItem('token');
+    return this.http.post<inscripcionVoluntariado>(`${this.apiUrl}/api/user/InscripcionAVoluntariado`, inscripcion, { headers: new HttpHeaders({
+      //se envia el token como header
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}` })
+    });
+    }
+
+    
+
 }

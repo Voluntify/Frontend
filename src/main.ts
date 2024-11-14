@@ -1,5 +1,4 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 import { provideRouter, RouterModule, Routes } from '@angular/router';
 import { StartPageComponent } from './app/pages/start-page/start-page.component';
@@ -21,6 +20,7 @@ import { ProfileVolunteerPageComponent } from './app/pages/profile-volunteer-pag
 import { CertificatesPageComponent } from './app/pages/certificates-page/certificates-page.component';
 import { SettingsVolunteerPageComponent } from './app/pages/settings-volunteer-page/settings-volunteer-page.component';
 import { VolunteerSelectedPageComponent } from './app/pages/volunteer-selected-page/volunteer-selected-page.component';
+import { RegistrationFormPageComponent } from './app/pages/registration-form-page/registration-form-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'start', pathMatch: 'full' },
@@ -39,7 +39,8 @@ const routes: Routes = [
   { path: 'profile-volunteer', component: ProfileVolunteerPageComponent},
   { path: 'certificates', component: CertificatesPageComponent},
   { path: 'settings-volunteer', component: SettingsVolunteerPageComponent},
-  { path: 'volunteer-selected-page', component: VolunteerSelectedPageComponent}
+  { path: 'volunteer-selected-page', component: VolunteerSelectedPageComponent},
+  { path: 'registrarion-form-page', component: RegistrationFormPageComponent}
 ];
 
 bootstrapApplication(AppComponent, {

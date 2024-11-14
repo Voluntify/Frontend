@@ -1,1 +1,49 @@
-<p>registration-form-page works!</p>
+<main>
+    <div class="register">
+      <h1>Inscríbete</h1>
+      <form [formGroup]="RegistrationVol" (ngSubmit)="registrarInscripcion()">
+
+        <!-- Campo del estado -->
+        <mat-radio-group formControlName="estado">
+            <mat-radio-button class="example-margin" value="true">Asistiré</mat-radio-button>
+            <mat-radio-button class="example-margin" value="false">No estoy seguro de pode asistir</mat-radio-button>
+        </mat-radio-group>
+        <!-- Validaciones -->
+        <mat-error *ngIf="RegistrationVol.get('estado')?.invalid && (RegistrationVol.get('estado')?.dirty || 
+        RegistrationVol.get('estado')?.touched)">
+            {{ RegistrationVol.get('estado')?.hasError('required') ? 'Campo estado es obligatorio' : '' }}  
+        </mat-error>
+  
+        <!-- Campo de la fecha de inscripción -->
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha de Inscripción</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="fecha_inscripcion" required />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="RegistrationVol.get('fecha_inscripcion')?.invalid && (RegistrationVol.get('fecha_inscripcion')?.dirty || 
+          RegistrationVol.get('fecha_inscripcion')?.touched)">
+            {{ RegistrationVol.get('fecha_inscripcion')?.hasError('required') ? 'La fecha es obligatoria' : '' }}
+            {{ RegistrationVol.get('fecha_inscripcion')?.hasError('FechaInvalida') ? 'La fecha debe ser hoy' : '' }}
+          </mat-error>
+        </mat-form-field>
+  
+        <!-- Campo del id_usuarios solo para ver-->
+        <mat-form-field appearance="outline">
+          <mat-label>ID de Usuario</mat-label>
+          <input matInput formControlName="id_usuarios" readonly />
+        </mat-form-field>
+  
+        <!-- Campo del id_voluntariados solo para ver -->
+        <mat-form-field appearance="outline">
+          <mat-label>ID de Voluntariado</mat-label>
+          <input matInput formControlName="id_voluntariados" readonly />
+        </mat-form-field>
+  
+        <div class="button-group">
+          <button mat-raised-button class="register-btn" type="submit" [disabled]="RegistrationVol.invalid">Registrarme</button>
+          <button mat-button class="cancel-btn" type="button" (click)="cancelar()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </main>
+  
