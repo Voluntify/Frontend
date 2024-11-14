@@ -9,7 +9,9 @@
         <mat-label>Buscar por nombre</mat-label>
         <input matInput [(ngModel)]="nombreBuscar" (input)="getVoluntariadosByName()">
       </mat-form-field>
-      <button (click)="getVoluntariadosByName()"><mat-icon>search</mat-icon></button>  
+      <button (click)="getVoluntariadosByName()">
+        <mat-icon>search</mat-icon>
+      </button>  
     </div>
 
     <div class="row">

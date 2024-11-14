@@ -57,7 +57,7 @@ export class VolunteersPageComponent {
   getVoluntariadosByName(): void {
     if (this.nombreBuscar) {
       // Guardar el nombre en localStorage
-      this.voluntifyService.setNombre(this.nombreBuscar); 
+      this.voluntifyService.setNombreABuscar(this.nombreBuscar); 
       // Usa la funcion searchVoluntariadosByName para buscar voluntariados por nombre
       this.voluntifyService.getVoluntariadosByName().subscribe(
         (data: voluntariadosTotal[]) => {

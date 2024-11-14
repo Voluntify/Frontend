@@ -38,6 +38,17 @@ export class VoluntifyService {
      });
     }
 
+    //metodo para obtener el nombre del usuario
+    setUsername(name: string) {
+      this.name = name;
+      localStorage.setItem('username', name);
+    }
+
+    //metodo para obtener el nombre del usuario
+    getUsername(): string | null {
+      return localStorage.getItem('username');
+    }
+
     //metodo para guardar token en localstorage
     setToken(token: string) {
       this.token = token;
@@ -62,13 +73,13 @@ export class VoluntifyService {
     }
 
     // Método para guardar el nombre del voluntariado en localStorage, para buscar por nombre
-    setNombre(name: string){
+    setNombreABuscar(name: string){
       this.name = name;
       localStorage.setItem('name', name);
     }
 
     // Método para obtener el nombre del voluntariado desde localStorage, para buscar por nombre
-    getNombre(): string | null {
+    getNombreABuscar(): string | null {
       return localStorage.getItem('name');
     }
 
@@ -77,7 +88,7 @@ export class VoluntifyService {
       //se almacena en la constante token el token del localstorage
       const token = localStorage.getItem('token');
       //se almacena en la constante name el name del localstorage con la funcion getNombre
-      const name = this.getNombre();
+      var name = this.getNombreABuscar();
     
       return this.http.get<any>(`${this.apiUrl}/api/user/VerVoluntariadosPorNombre`, { 
         //se envia el nombre como parametro
@@ -88,5 +99,15 @@ export class VoluntifyService {
           'Authorization': `Bearer ${token}`
         })
        });
+    }
+
+    obtenerPerfil(): Observable<any> {
+      const token = localStorage.getItem('token');
+      var name = this.getUsername();
+      return this.http.get<any>(`${this.apiUrl}/api/user/perfil`, {  params: new HttpParams().set('name', name || ''), headers: new HttpHeaders({
+        //se envia el token como header
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+    });
     }
 }
