@@ -9,6 +9,7 @@ import { VoluntifyService } from '../../service/voluntify.service';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-volunteers-page',
@@ -21,11 +22,9 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     FormsModule,
     CommonModule,
-
     MatFormFieldModule,
-
     MatInputModule
-  ],
+    ],
   templateUrl: './volunteers-page.component.html',
   styleUrl: './volunteers-page.component.css'
 })
@@ -35,7 +34,8 @@ export class VolunteersPageComponent {
   nombreBuscar: string = '';  
 
   constructor(
-    private voluntifyService: VoluntifyService
+    private voluntifyService: VoluntifyService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -71,5 +71,10 @@ export class VolunteersPageComponent {
       //Si el nombre no existe, se cargan todos los voluntariados
       this.getVoluntariados();  
     }
+  }
+
+  ConocerMas(voluntariado: voluntariadosTotal): void {
+    this.voluntifyService.setNameVoluntariadoSelected(voluntariado.nombre as string);
+    this.router.navigate(['/volunteer-selected-page']);
   }
 }

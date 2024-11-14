@@ -11,6 +11,7 @@ import { Login} from '../model/login';
 export class VoluntifyService {
   public token: string | null = null;
   public name: string | null = null;
+  public userCode: number | null = null;  
 
   private apiUrl = 'http://localhost:8080'; // URL del backend
 
@@ -182,5 +183,49 @@ export class VoluntifyService {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}` })
     });
+    }
+
+    //metodo para alamcenar el nombre del voluntariado seleccionado
+    setNameVoluntariadoSelected(name: string) {
+      this.name = name;
+      localStorage.setItem('name', name);
+    }
+
+    //metodo para obtener el nombre del voluntariado seleccionado
+    getNameVoluntariadoSelected(): string | null {
+      return localStorage.getItem('name');
+    }
+
+    //metodo para obtener EL voluntariado seleccionado
+    obtenerVoluntariadoSeleccionado(): Observable<any> {
+      const token = localStorage.getItem('token');
+      var name = this.getNameVoluntariadoSelected();
+      return this.http.get<any>(`${this.apiUrl}/api/user/VerVoluntariadosPorNombreTotal`, {  
+        //se envia el nombre como parametro
+        params: new HttpParams().set('name', name || ''), 
+        headers: new HttpHeaders({
+        //se envia el token como header
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+    });
+    }
+
+    //metodo para almacenar el codigo del usuario
+    obtenerUserCode(): Observable<any> {
+      const token = localStorage.getItem('token');
+      var name = this.getUsername();
+      return this.http.get<any>(`${this.apiUrl}/api/user/codigoUsuario`, {  
+        //se envia el nombre como parametro
+        params: new HttpParams().set('name', name || ''), 
+        headers: new HttpHeaders({
+        //se envia el token como header
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+    });
+    }
+
+    setUserCode(userCode: number) {
+      this.userCode = userCode;
+      localStorage.setItem('userCode', userCode.toString());
     }
 }

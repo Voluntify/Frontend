@@ -20,6 +20,7 @@ import { OrganizationsPageComponent } from './app/pages/organizations-page/organ
 import { ProfileVolunteerPageComponent } from './app/pages/profile-volunteer-page/profile-volunteer-page.component';
 import { CertificatesPageComponent } from './app/pages/certificates-page/certificates-page.component';
 import { SettingsVolunteerPageComponent } from './app/pages/settings-volunteer-page/settings-volunteer-page.component';
+import { VolunteerSelectedPageComponent } from './app/pages/volunteer-selected-page/volunteer-selected-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'start', pathMatch: 'full' },
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'profile-volunteer', component: ProfileVolunteerPageComponent},
   { path: 'certificates', component: CertificatesPageComponent},
   { path: 'settings-volunteer', component: SettingsVolunteerPageComponent},
+  { path: 'volunteer-selected-page', component: VolunteerSelectedPageComponent}
 ];
 
 bootstrapApplication(AppComponent, {

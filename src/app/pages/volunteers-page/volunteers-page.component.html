@@ -24,7 +24,7 @@
                 <p>Descripción: {{ voluntariado.descripcion }}</p>
               </mat-card-content>
               <mat-card-actions>
-                <button mat-button routerLink="/volunteers" class="custom-button">Conoce más</button>
+                <button mat-button (click)="ConocerMas(voluntariado)" class="custom-button">Conoce más</button>
               </mat-card-actions>
             </div>
         </div>

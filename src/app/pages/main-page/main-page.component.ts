@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { NavbarMainPageComponent } from "../navbar-main-page/navbar-main-page.component";
 import { voluntariadosTotal } from '../../model/voluntariadosTotal';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -13,7 +14,8 @@ imports: [
     MatCardModule,
     MatButtonModule,
     CommonModule,
-    NavbarMainPageComponent
+    NavbarMainPageComponent,
+    RouterLink
 ],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.css'
