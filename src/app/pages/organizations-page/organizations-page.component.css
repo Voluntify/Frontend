@@ -15,7 +15,7 @@ html {
 }
 
 .content {
-    display: flex;
+    display: center;
     align-items: left;
     flex-direction: column;
     width: 100vw;
@@ -66,8 +66,9 @@ html {
 }
 
 button {
-    background-color: #9D8DF1;
+    background-color: #e4650a;
     color: #ffffff;
+    font-weight: bolder;
     border: none;
     border-radius: 25px;
     margin-top:5px;
@@ -81,5 +82,5 @@ button {
 
 
 button:hover {
-    background-color: #8f76d0;
+    background-color: #e4650a;
 }
