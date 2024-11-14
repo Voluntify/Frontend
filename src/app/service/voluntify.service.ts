@@ -5,6 +5,8 @@ import { Usuarios } from '../model/usuarios';
 import { Organizaciones } from '../model/organizaciones';
 import { Login} from '../model/login';
 import { inscripcionVoluntariado } from '../model/inscripcionVoluntariado';
+import { HabilidadesNuevasPorUsuario } from '../model/habilidadesNuevasPorUsuario';
+import { InteresesNuevosPorUsuario } from '../model/interesesNuevosPorUsuario';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,9 @@ export class VoluntifyService {
   public name: string | null = null;
   public userCode: number | null = null;  
   public idVoluntariado: number | null = null;
+  public correo: string | null = null;
+  public telefono: number | null = null;
+  public direccion: string | null = null;
 
   private apiUrl = 'http://localhost:8080'; // URL del backend
 
@@ -212,7 +217,7 @@ export class VoluntifyService {
     });
     }
 
-    //metodo para almacenar el codigo del usuario
+    //metodo para almacenar el codigo del usuario usando el backend
     obtenerUserCode(): Observable<any> {
       const token = localStorage.getItem('token');
       var name = this.getUsername();
@@ -232,7 +237,7 @@ export class VoluntifyService {
       localStorage.setItem('userCode', userCode.toString());
     }
 
-    //metodo para obtener el codigo del usuario
+    //metodo para obtener el codigo del usuario del localstorage
     getUserCode(): number | null {
       return localStorage.getItem('userCode') ? parseInt(localStorage.getItem('userCode') || '') : null;
     }
@@ -258,6 +263,118 @@ export class VoluntifyService {
     });
     }
 
-    
+    //Metodos para editar el perfil del usuario
+    // Método para almacenar el correo en localStorage
+    setCorreo(correo: string){
+      this.correo = correo;
+      localStorage.setItem('correo', correo);
+    }
 
+    // Método para obtener el correo desde localStorage
+    getCorreo(): string | null {
+      return localStorage.getItem('correo');
+    }
+
+    //metodo para modificae el correo del usuario
+    putUserMail(usuario: Usuarios): Observable<Usuarios> {
+      const token = localStorage.getItem('token');
+      const usuarioId = this.getUserCode();
+      const correo = this.getCorreo();
+    
+      return this.http.put<Usuarios>(`${this.apiUrl}/api/user/CorreoModificacion`, usuario, { 
+        params: new HttpParams()
+          .set('usuarioId', usuarioId || '')  
+          .set('correo', correo || ''),  
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+      });
+    }
+
+    //metodo para almacenar el codigo del usuario en localstorage
+    setUserPhone(telefono: number) {
+      this.telefono = telefono;
+      localStorage.setItem('telefono', telefono.toString());
+    }
+
+    //metodo para obtener el codigo del usuario del localstorage
+    getUserPhone(): number | null {
+      return localStorage.getItem('telefono') ? parseInt(localStorage.getItem('telefono') || '') : null;
+    }
+
+    //metodo para modificae el telefono del usuario
+    putUserPhone(usuario: Usuarios): Observable<Usuarios> {
+      const token = localStorage.getItem('token');
+      const usuarioId = this.getUserCode();
+      const telefono = this.getUserPhone();
+    
+      return this.http.put<Usuarios>(`${this.apiUrl}/api/user/TelefonoModificacion`, usuario, { 
+        params: new HttpParams()
+          .set('usuarioId', usuarioId || '')  
+          .set('telefono', telefono || ''),  
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+      });
+    }
+
+    // Método para almacenar la direccion en localStorage
+    setDireccion(direccion: string){
+      this.direccion = direccion;
+      localStorage.setItem('direccion', direccion);
+    }
+
+    // Método para obtener la direccion desde localStorage
+    getDireccion(): string | null {
+      return localStorage.getItem('direccion');
+    }
+    
+    //metodo para modificae la direccion del usuario
+    putUserLocation(usuario: Usuarios): Observable<Usuarios> {
+      const token = localStorage.getItem('token');
+      const usuarioId = this.getUserCode();
+      const direccion = this.getDireccion();
+    
+      return this.http.put<Usuarios>(`${this.apiUrl}/api/user/DireccionModificacion`, usuario, { 
+        params: new HttpParams()
+          .set('usuarioId', usuarioId || '')  
+          .set('direccion', direccion || ''),  
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+      });
+    }
+
+    //metodo para registrar habilidades por usuario
+    addHabilidadesPorUsuaro(habilidadesNuevasPorUsuario: HabilidadesNuevasPorUsuario): Observable<HabilidadesNuevasPorUsuario> {
+      const token = localStorage.getItem('token');
+      return this.http.post<HabilidadesNuevasPorUsuario>(`${this.apiUrl}/api/user/RegistroHabilidadesPorUsuario`, habilidadesNuevasPorUsuario, { 
+        headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+      });
+    }
+
+    //obtener todas las habilidades
+    obtenerHabilidades(): Observable<any> {
+      return this.http.get<any>(`${this.apiUrl}/api/VerHabilidades`);
+    }
+
+    //metodo para registrar intereses por usuario
+    addInteresesPorUsuaro(interesesNuevosPorUsuario: InteresesNuevosPorUsuario): Observable<InteresesNuevosPorUsuario> {
+      const token = localStorage.getItem('token');
+      return this.http.post<InteresesNuevosPorUsuario>(`${this.apiUrl}/api/user/RegistroInteresPorUsuario`, interesesNuevosPorUsuario, { 
+        headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+      });
+    }
+
+    //metodo para obtener todos los intereses
+    obtenerIntereses(): Observable<any> {
+      return this.http.get<any>(`${this.apiUrl}/api/VerIntereses`);
+    }
 }

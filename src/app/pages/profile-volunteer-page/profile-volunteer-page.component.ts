@@ -45,10 +45,11 @@ export class ProfileVolunteerPageComponent implements OnInit {
     this.obtenerVoluntariadosPorPerfil();
   }
 
+  //uso este luego para obtiene el correo en seetings para actualizar
   obtenerPerfil(): void {
     this.voluntifyService.obtenerPerfil().subscribe(
       (data: Usuarios[]) => {  
-        if (data && data.length > 0) {
+        if (data) {
           this.usuario = data;  
         } 
       },
@@ -61,7 +62,7 @@ export class ProfileVolunteerPageComponent implements OnInit {
   obtenerHabilidadesPorPerfil(): void {
     this.voluntifyService.obtenerHabilidadesPorPerfil().subscribe(
       (data: HabilidadesPorUsuario[]) => {  
-        if (data && data.length > 0) {
+        if (data) {
           this.habilidad = data;  
         } 
       },
@@ -74,7 +75,7 @@ export class ProfileVolunteerPageComponent implements OnInit {
   obtenerInteresesPorPerfil(): void {
     this.voluntifyService.obtenerInteresesPorPerfil().subscribe(
       (data: InteresesPorUsuario[]) => {  
-        if (data && data.length > 0) {
+        if (data) {
           this.interes = data;  
         } 
       },
@@ -87,7 +88,7 @@ export class ProfileVolunteerPageComponent implements OnInit {
   obtenerVoluntariadosPorPerfil(): void {
     this.voluntifyService.obtenerVoluntariadosRealizadosorPerfil().subscribe(
       (data: VoluntariadosPorUsuario[]) => {  
-        if (data && data.length > 0) {
+        if (data) {
           this.voluntariados = data;  
         } 
       },
