@@ -46,6 +46,7 @@ html {
     height: auto;
     text-align: left;
     font-family: 'Poppins';
+    background-color: white;
 }
 
 .card mat-card-title{

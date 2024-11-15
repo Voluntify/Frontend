@@ -12,6 +12,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { VoluntifyService } from '../../service/voluntify.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { Router } from '@angular/router';
+import { NavbarMainPageComponent } from "../navbar-main-page/navbar-main-page.component";
 
 @Component({
   selector: 'app-registration-form-page',
@@ -28,7 +29,8 @@ import { Router } from '@angular/router';
     MatRadioModule,
     FormsModule,
     MatDatepickerModule,
-  ],
+    NavbarMainPageComponent
+],
   templateUrl: './registration-form-page.component.html',
   styleUrl: './registration-form-page.component.css'
 })

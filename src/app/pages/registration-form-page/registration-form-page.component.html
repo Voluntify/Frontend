@@ -1,8 +1,10 @@
-<main>
-    <div class="register">
-      <h1>Inscríbete</h1>
-      <form [formGroup]="RegistrationVol" (ngSubmit)="registrarInscripcion()">
+<app-navbar-main-page />
 
+<main class="content">
+    <div class="register">
+      <h1>Inscripcion al voluntariado</h1>
+      <form [formGroup]="RegistrationVol" (ngSubmit)="registrarInscripcion()">
+        <div class="datos">
         <!-- Campo del estado -->
         <mat-radio-group formControlName="estado">
             <mat-radio-button class="example-margin" value="true">Asistiré</mat-radio-button>
@@ -15,7 +17,7 @@
         </mat-error>
   
         <!-- Campo de la fecha de inscripción -->
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="custom-form-field">
           <mat-label>Fecha de Inscripción</mat-label>
           <input matInput [matDatepicker]="picker" formControlName="fecha_inscripcion" required />
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -26,18 +28,7 @@
             {{ RegistrationVol.get('fecha_inscripcion')?.hasError('FechaInvalida') ? 'La fecha debe ser hoy' : '' }}
           </mat-error>
         </mat-form-field>
-  
-        <!-- Campo del id_usuarios solo para ver-->
-        <mat-form-field appearance="outline">
-          <mat-label>ID de Usuario</mat-label>
-          <input matInput formControlName="id_usuarios" readonly />
-        </mat-form-field>
-  
-        <!-- Campo del id_voluntariados solo para ver -->
-        <mat-form-field appearance="outline">
-          <mat-label>ID de Voluntariado</mat-label>
-          <input matInput formControlName="id_voluntariados" readonly />
-        </mat-form-field>
+          </div>
   
         <div class="button-group">
           <button mat-raised-button class="register-btn" type="submit" [disabled]="RegistrationVol.invalid">Registrarme</button>
