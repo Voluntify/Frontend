@@ -26,6 +26,9 @@ import { RegistrationFormPageComponent } from './app/pages/registration-form-pag
 import { CreateEventPageComponent } from './app/pages/create-event-page/create-event-page.component';
 import { OrganizationPageByVolunteerComponent } from './app/pages/organization-page-by-volunteer/organization-page-by-volunteer.component';
 import { SubscriptionPageComponent } from './app/pages/subscription-page/subscription-page.component';
+import { PreviewEventPageComponent } from './app/pages/preview-event-page/preview-event-page.component';
+import { PreviewEventPremiumPageComponent } from './app/pages/preview-event-premium-page/preview-event-premium-page.component';
+import { RegistrationListPageComponent } from './app/pages/registration-list-page/registration-list-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'start', pathMatch: 'full' },
@@ -51,7 +54,11 @@ const routes: Routes = [
   { path: 'organization-main', component: OrganizationPageComponent},
   { path: 'organization-by-volunteer', component: OrganizationPageByVolunteerComponent},
   { path: 'create-event', component: CreateEventPageComponent},
-  { path: 'subscription', component: SubscriptionPageComponent}
+  { path: 'subscription', component: SubscriptionPageComponent},
+  { path: 'view-event-free', component: PreviewEventPageComponent},
+  { path: 'view-event-premium', component: PreviewEventPremiumPageComponent},
+  { path: 'list-view', component: RegistrationListPageComponent}
+
 ];
 
 bootstrapApplication(AppComponent, {

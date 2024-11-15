@@ -23,6 +23,8 @@ export class VoluntifyService {
   public contrasena: string | null = null;
   public idOrganizacion: number | null = null;
   public suscripcion_activa: boolean = false;
+  public voluntariadoAMostrar: string | null = null;
+  public voluntariadoLista: string | null = null;
 
   private apiUrl = 'http://localhost:8080'; // URL del backend
 
@@ -523,5 +525,138 @@ export class VoluntifyService {
           'Authorization': `Bearer ${token}`
         })
       });
+    }
+
+
+    setVoluntariadoAMostrar(voluntariadoAMostrar: string){
+      this.voluntariadoAMostrar = voluntariadoAMostrar;
+      localStorage.setItem('voluntariadoAMostrar', voluntariadoAMostrar);
+    }
+
+    // Método para obtener la suscripcion_activa desde localStorage
+    getVoluntariadoAMostrar(): string | null {
+      return localStorage.getItem('voluntariadoAMostrar');
+    }
+
+    //metodo para obtener voluntariados por nombre
+    getVoluntariadosByNameAdmin(){
+      //se almacena en la constante token el token del localstorage
+      const token = localStorage.getItem('token');
+      var voluntariadoAMostrar = this.getVoluntariadoAMostrar();
+      return this.http.get<any>(`${this.apiUrl}/api/admin/VerVoluntariadosPorNombre`, { 
+        //se envia el nombre como parametro
+        params: new HttpParams().set('name', voluntariadoAMostrar || ''), 
+        //se envia el token como header
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+       });
+    }
+
+
+    //Metodos para editar un voluntariado
+    //metodo para modificar el correo del voluntariado
+    putDescripcion(voluntariado: Voluntariado, descripcion: string): Observable<Voluntariado> {
+      const token = localStorage.getItem('token');
+      const Id = this.getIdVoluntariado();
+      return this.http.put<Voluntariado>(`${this.apiUrl}/api/admin/DescripcionModificacion`, voluntariado, { 
+        params: new HttpParams()
+          .set('Id', Id || '')  
+          .set('descripcion', descripcion || ''),  
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+      });
+    }
+
+    //metodo para modificar los requisitos del voluntariado
+    putRequisitos(voluntariado: Voluntariado, requisitos: string): Observable<Voluntariado> {
+      const token = localStorage.getItem('token');
+      const Id = this.getIdVoluntariado();
+      return this.http.put<Voluntariado>(`${this.apiUrl}/api/admin/requisitosModificacion`, voluntariado, { 
+        params: new HttpParams()
+          .set('Id', Id || '')  
+          .set('requisitos', requisitos || ''),  
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+      });
+    }
+
+     //metodo para modificar la ubicacion del voluntariado
+     putUbicacion(voluntariado: Voluntariado, ubicacion: string): Observable<Voluntariado> {
+      const token = localStorage.getItem('token');
+      const Id = this.getIdVoluntariado();
+      return this.http.put<Voluntariado>(`${this.apiUrl}/api/admin/ubicacionModificacion`, voluntariado, { 
+        params: new HttpParams()
+          .set('Id', Id || '')  
+          .set('ubicacion', ubicacion || ''),  
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+      });
+    }
+
+     //metodo para modificar la fecha_fin del voluntariado
+     putFecha_fin(voluntariado: Voluntariado, fecha_fin: Date): Observable<Voluntariado> {
+      const token = localStorage.getItem('token');
+      const Id = this.getIdVoluntariado();
+      const fecha_finNew = fecha_fin.toISOString().split('T')[0];
+
+      return this.http.put<Voluntariado>(`${this.apiUrl}/api/admin/fecha_finModificacion`, voluntariado, { 
+        params: new HttpParams()
+          .set('Id', Id || '')  
+          .set('fecha_fin', fecha_finNew),  
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+      });
+    }
+
+     //metodo para modificar la fecha_fin del voluntariado
+     putFecha_inicio(voluntariado: Voluntariado, fecha_inicio: Date): Observable<Voluntariado> {
+      const token = localStorage.getItem('token');
+      const Id = this.getIdVoluntariado();
+      const fecha_inicioNew = fecha_inicio.toISOString().split('T')[0]; 
+      
+      return this.http.put<Voluntariado>(`${this.apiUrl}/api/admin/fecha_inicioModificacion`, voluntariado, { 
+        params: new HttpParams()
+          .set('Id', Id || '')  
+          .set('fecha_inicio', fecha_inicioNew),  
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+      });
+    }
+
+    setVoluntariadoLista(voluntariadoLista: string) {
+      this.voluntariadoLista = voluntariadoLista;
+      localStorage.setItem('voluntariadoLista', voluntariadoLista);
+    }
+
+    //metodo para obtener el nombre del voluntariado seleccionado
+    getVoluntariadoLista(): string | null {
+      return localStorage.getItem('voluntariadoLista');
+    }
+    
+    //metodo para obtener lista de inscripciones
+    getInscripcionesAVoluntariado(){
+      const token = localStorage.getItem('token')
+      const name = this.getVoluntariadoLista();
+      return this.http.get<any>(`${this.apiUrl}/api/admin/VerInscripcionesPorVoluntariado`, {
+        //se envia el nombre como parametro
+        params: new HttpParams().set('name', name || ''),
+        //se envia el token como header
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+      }) 
     }
 }

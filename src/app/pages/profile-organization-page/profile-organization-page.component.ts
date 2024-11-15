@@ -32,9 +32,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './profile-organization-page.component.css'
 })
 export class ProfileOrganizationPageComponent implements OnInit{
-  token: string | null = null;
   organizaciones: Organizaciones[] = [];
   voluntariados: Voluntariado[] = [];
+  Suscripcion: string | null = null;
 
   constructor(
     private voluntifyService: VoluntifyService,
@@ -46,6 +46,18 @@ export class ProfileOrganizationPageComponent implements OnInit{
     //se obtienen la informacion de la organizacion
     this.obtenerInfoOrganizationMain();
     this.obtenerVoluntariadosPorOrganizacion();
+  }
+
+  EditByGetSuscripcion(voluntariados: Voluntariado){
+    //se almacena el nombre a mostrar
+    this.voluntifyService.setVoluntariadoAMostrar(voluntariados.titulo as string);
+    this.voluntifyService.setIdVoluntariado(voluntariados.codigo as number);
+    this.Suscripcion = this.voluntifyService.getSuscripcion();
+    if(this.Suscripcion == 'true'){
+    this.router.navigate(['/view-event-premium']);
+    }else{
+      this.router.navigate(['/view-event-free']);
+    }
   }
 
   obtenerInfoOrganizationMain(){

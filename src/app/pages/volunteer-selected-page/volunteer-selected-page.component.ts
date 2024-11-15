@@ -64,10 +64,10 @@ export class VolunteerSelectedPageComponent {
       (data: voluntariadosSeleccionado[]) => {
         //se almacena el voluntariado seleccionado
         this.voluntariado = data;
-        if (this.voluntariado) {
-          //se almacena el codigo del voluntariado seleccionado
-            this.voluntifyService.setIdVoluntariado(this.voluntariado[0].codigo);
-        }
+        // if (this.voluntariado) {
+        //   //se almacena el codigo del voluntariado seleccionado
+        //     this.voluntifyService.setIdVoluntariado(this.voluntariado[0].codigo);
+        // }
       },
       (error) => {
         console.error('Error al cargar el voluntariado', error);

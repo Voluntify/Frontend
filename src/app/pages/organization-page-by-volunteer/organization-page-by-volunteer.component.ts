@@ -22,8 +22,7 @@ import { Voluntariado } from '../../model/voluntariado';
   FormsModule,
   CommonModule,
   MatFormFieldModule,
-  MatInputModule,
-  RouterLink  
+  MatInputModule
   ],
   templateUrl: './organization-page-by-volunteer.component.html',
   styleUrl: './organization-page-by-volunteer.component.css'
@@ -64,6 +63,11 @@ export class OrganizationPageByVolunteerComponent implements OnInit{
         console.error('Error al cargar los voluntariados', error);
       }
     );
+  }
+
+  setIdVoluntariado(voluntariados: Voluntariado): void {
+    this.voluntifyService.setIdVoluntariado(voluntariados.codigo as number);
+    this.router.navigate(['/volunteer-selected-page']);
   }
 }
 

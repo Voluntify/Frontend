@@ -51,6 +51,7 @@ export class MainPageComponent implements OnInit{
 
   ConocerMas(voluntariado: voluntariadosTotal): void {
     this.voluntifyService.setNameVoluntariadoSelected(voluntariado.nombre as string);
+    this.voluntifyService.setIdVoluntariado(voluntariado.codigo as number);
     this.router.navigate(['/volunteer-selected-page']);
   }
 }

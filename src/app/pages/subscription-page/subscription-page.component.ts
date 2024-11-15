@@ -62,9 +62,11 @@ export class SubscriptionPageComponent {
     this.voluntifyService.putSuscripcion(organizaciones).subscribe(
       (updatedUser) => {
         this.snackBar.open('Suscripción actualizada exitosamente', 'Cerrar', { duration: 3000 });
+        this.router.navigate(['/organization-main']);
       },
       (error) => {
         this.snackBar.open('Error al actualizar la suscripción', 'Cerrar', { duration: 3000 });
+        this.router.navigate(['/organization-main']);
       }
     );  
   }
