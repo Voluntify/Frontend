@@ -51,7 +51,6 @@ html {
     flex-wrap: wrap;
 }
 
-
 .card{
     padding: 10px;
     margin: 20px;
@@ -59,16 +58,27 @@ html {
     box-shadow: 2px 2px 5px grey;
     width: 250px;
     height: auto;
+    text-align: left;
+}
+
+.card mat-card-title{
+    font-size: 17px;
+    white-space: normal;
     text-align: center;
 }
 
-.card-body h1{
-    font-size: 17px;
-    white-space: normal;
-}
-.card-body p{
-    font-size: 13.3px;
+.card mat-card-subtitle{
+    font-size: 13.5px;
     color: darkslategray;
+}
+.card p{
+    font-size: 13.5px;
+    color: darkslategray;
+    margin-top: 5px;
+}
+
+mat-card-actions{
+    justify-content: center;
 }
 
 button {
@@ -84,6 +94,7 @@ button {
     transition: background-color 0.3s ease;
     box-shadow: 2px 2px 5px grey;
 }
+
 
 
 button:hover {

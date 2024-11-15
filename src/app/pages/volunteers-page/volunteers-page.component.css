@@ -24,20 +24,11 @@ html {
     padding-top: 60px;
 }
 
-.actions{
-    background-color: yellow;
-    width: 100%;
-    height: 250px;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-}
-
-
 .content h3{
     color: darkslategray;
     margin: 15px;
 }
+
 .row{
     padding: 5px;
     max-width: 100%;
@@ -46,7 +37,6 @@ html {
     flex-wrap: wrap;
 }
 
-
 .card{
     padding: 10px;
     margin: 20px;
@@ -54,16 +44,31 @@ html {
     box-shadow: 2px 2px 5px grey;
     width: 250px;
     height: auto;
-    text-align: center;
+    text-align: left;
+    font-family: 'Poppins';
 }
 
-.card-body h1{
+.card mat-card-title{
     font-size: 17px;
     white-space: normal;
+    text-align: center;
+    font-family: 'Poppins';
 }
-.card-body p{
-    font-size: 13.3px;
+
+.card mat-card-subtitle{
+    font-size: 13.5px;
     color: darkslategray;
+    font-family: 'Poppins';
+}
+.card p{
+    font-size: 13.5px;
+    color: darkslategray;
+    margin-top: 5px;
+    font-family: 'Poppins';
+}
+
+mat-card-actions{
+    justify-content: center;
 }
 
 button {
@@ -78,41 +83,10 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 2px 2px 5px grey;
+    font-family: 'Poppins';
 }
 
 
 button:hover {
     background-color: #8f76d0;
 }
-
-/* Estilos responsive 
-@media (max-width: 768px) {
-    main {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 2rem;
-        height: auto;
-    }
-
-    main div:first-child {
-        max-width: 100%;
-    }
-
-    main h1 {
-        font-size: 2.5rem;
-    }
-
-    main p {
-        font-size: 1.1rem;
-    }
-
-    main img {
-        max-width: 100%;
-        margin-top: 1.5rem;
-    }
-}
-
-
-*/
-  

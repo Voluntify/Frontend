@@ -7,21 +7,30 @@
     <div class="row">
         <div *ngFor="let voluntariado of voluntariado">
             <div class="card" appearance="outlined">
-            <mat-card-header>
-                <mat-card-title>{{ voluntariado.nombre }}</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                <p>Codigo del voluntariado: {{ voluntariado.codigo }}</p>
-                <p>Descripción: {{ voluntariado.descripcion }}</p>
-                <p>Fecha de inicio: {{ voluntariado.fecha_inicio }}</p>
-                <p>Fecha de fin: {{ voluntariado.fecha_fin }}</p>
-                <p>Ubicación: {{ voluntariado.ubicacion }}</p>
-                <p>Requisitos: {{ voluntariado.requisitos }}</p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button routerLink="/registrarion-form-page" class="custom-button">Quiero inscribirme</button>
-                <button mat-button routerLink="/main" class="custom-button">Cancelar</button>
-              </mat-card-actions>
+                <div class="header">
+                    <mat-card-header>
+                        <mat-card-title>{{ voluntariado.nombre }}</mat-card-title>
+                        <div class="info">
+                            <p>{{ voluntariado.ubicacion }}</p>
+                            <p>{{ voluntariado.fecha_inicio }}</p>
+                        </div>
+                    </mat-card-header>
+                </div>
+                <div class="descripcion">
+                    <mat-card-content>
+                        <p>{{ voluntariado.descripcion }}</p>
+                    </mat-card-content>
+                </div>
+                <mat-card-content>
+                    <div class="moreInfo">
+                        <p>Requisitos: {{ voluntariado.requisitos }}</p>
+                        <p>Fecha de fin: {{ voluntariado.fecha_fin }}</p>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button routerLink="/registrarion-form-page" class="custom-button">Quiero inscribirme</button>
+                    <button mat-button routerLink="/main" class="custom-button">Cancelar</button>
+                </mat-card-actions>
             </div>
         </div>
     </div>

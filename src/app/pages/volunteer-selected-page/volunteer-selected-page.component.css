@@ -24,15 +24,6 @@ html {
     padding-top: 60px;
 }
 
-.actions{
-    background-color: yellow;
-    width: 100%;
-    height: 250px;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-}
-
 
 .content h3{
     color: darkslategray;
@@ -46,16 +37,80 @@ html {
     flex-wrap: wrap;
 }
 
+.row{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 .card{
-    padding: 10px;
-    margin: 20px;
+    padding: 30px;
+    margin-top: 20px;
     border-radius: 30px;
     box-shadow: 2px 2px 5px grey;
-    width: 250px;
-    height: auto;
+    width: 1000px;
+    height: 450px;
+    display: grid;
     text-align: center;
+    line-height: 30px;
 }
+
+mat-card-title{
+    font-size: 28px;
+    color: #FF715B;
+    font-weight: bold;
+}
+
+
+.info{
+    display: flex;
+    justify-content: center;
+}
+
+.info p{
+    color: #575757;
+    font-weight: normal;
+    margin: 10px;
+}
+
+.descripcion{
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px grey;
+}
+
+.moreInfo{
+    display: flex;
+    justify-content: center;
+}
+
+.moreInfo p{
+    color: #575757;
+    font-weight: normal;
+    margin: 10px;
+}
+
+button {
+    background-color: #9D8DF1;
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    margin:15px;
+    padding: 8px 30px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 2px 2px 5px grey;
+    font-family: 'Poppins';
+}
+
+
+button:hover {
+    background-color: #8f76d0;
+}
+
 
 
 
