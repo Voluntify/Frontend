@@ -1,20 +1,30 @@
 <app-navbar-organizations />
 <main class="content">
-    <h3>Info de la organizacion</h3>
-    
-    <div class="row">
+    <div class="perfil">
       <div *ngFor="let organizaciones of organizaciones">
-        <mat-card class="card" appearance="outlined">
-          <mat-card-header>
-            <mat-card-title>Nombre de la organizacion: {{ organizaciones.nombre }}</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p>Descripción: {{ organizaciones.descripcion }}</p>
-            <p>Codigo: {{ organizaciones.codigo }}</p>
-            <p>correo: {{ organizaciones.correo }}</p>
-            <p>telefono: {{ organizaciones.telefono }}</p>
-          </mat-card-content>
-        </mat-card>
+        <div class="card-perfil" appearance="outlined">
+          <div class="info">
+            <mat-card-title>{{ organizaciones.nombre }}</mat-card-title>
+            <mat-card-content>
+              <p>{{ organizaciones.descripcion }}</p>
+              <p>{{ organizaciones.correo }}</p>
+              <p>{{ organizaciones.telefono }}</p>
+            </mat-card-content>
+          </div>
+        </div>
+      </div>
+
+      <div *ngFor="let organizaciones of organizaciones">
+        <div class="contrasena">
+        <!-- Campo para actualizar la contraseña -->
+          <mat-form-field appearance="fill">
+            <mat-label>Contraseña</mat-label>
+            <input matInput [(ngModel)]="organizaciones.contrasena"/>
+          </mat-form-field>
+          <button mat-raised-button (click)="actualizarContrasena(organizaciones)">
+            Actualizar Contraseña
+          </button>
+        </div>
       </div>
     </div>
 
@@ -23,36 +33,23 @@
         <div *ngFor="let voluntariados of voluntariados">
           <mat-card class="card" appearance="outlined">
             <mat-card-header>
-              <mat-card-title>Nombre: {{ voluntariados.titulo }}</mat-card-title>
+              <mat-card-title>{{ voluntariados.titulo }}</mat-card-title>
+              <mat-card-subtitle>{{ voluntariados.descripcion }}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-              <p>Descripción: {{ voluntariados.descripcion }}</p>
-              <p>Codigo: {{ voluntariados.codigo }}</p>
-              <p>fecha_fin: {{ voluntariados.fecha_fin }}</p>
-              <p>fecha_inicio: {{ voluntariados.fecha_inicio }}</p>
-              <p>Ubicación: {{ voluntariados.ubicacion }}</p>
-              <p>requisitos: {{ voluntariados.requisitos }}</p>
+              <p><strong>Inicio: </strong> {{ voluntariados.fecha_inicio }}</p>
+              <p><strong>Fin:</strong> {{ voluntariados.fecha_fin }}</p>
+              <p><strong>Dirección:</strong> {{ voluntariados.ubicacion }}</p>
+              <p><strong>Requisitos:</strong> {{ voluntariados.requisitos }}</p>
             </mat-card-content>
+            <mat-card-actions>
+              <button mat-button (click)="EditByGetSuscripcion(voluntariados)">Editar voluntariado</button>
+            </mat-card-actions>
           </mat-card>
-          <mat-card-actions>
-            <button mat-button (click)="EditByGetSuscripcion(voluntariados)">Editar voluntariado</button>
-          </mat-card-actions>
         </div>
-      </div>
-                    
-      <div *ngFor="let organizaciones of organizaciones">
-        <div class="card" appearance="outlined">  
-        <!-- Campo para actualizar la contraseña -->
-        <mat-form-field appearance="fill">
-          <mat-label>Contraseña</mat-label>
-          <input matInput [(ngModel)]="organizaciones.contrasena"/>
-        </mat-form-field>
-        <button mat-raised-button (click)="actualizarContrasena(organizaciones)">
-          Actualizar Contraseña
-        </button>
-      </div>
     </div>
 
+    <div class="actions">
     <mat-card-actions>
       <button mat-button routerLink="/create-event" class="custom-button">Crear nuevo evento</button>
     </mat-card-actions>
@@ -60,5 +57,7 @@
     <mat-card-actions>
       <button mat-button routerLink="/organization-main" class="custom-button">Volver a inicio</button>
     </mat-card-actions>
+    </div>
 
-  </main>
+
+</main>
