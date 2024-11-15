@@ -1,3 +1,56 @@
+<!-- <app-navbar-main-page />
+
+<main>
+    <div class="content">
+        <div class="image">
+            <img src="main.jpg" alt="main">
+        </div>
+        <h3>Últimas novedades</h3>
+        <div class="novedades">
+            <mat-card class="voluntariados" appearance="outlined">
+                <img mat-card-image src="clown.jpg" alt="clown">
+                <mat-card-header>
+                    <mat-card-title>Voluntariado Clown</mat-card-title>
+                  </mat-card-header>
+                <mat-card-content>
+                    <p>Siloe</p>
+                    <p>18 de setiembre, 17:00 h</p>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button>Conoce más</button>
+                </mat-card-actions>
+            </mat-card>
+            <mat-card class="voluntariados" appearance="outlined">
+                <img mat-card-image src="kpwasi.jpeg" alt="kpwasi">
+                <mat-card-header>
+                    <mat-card-title>Voluntariado "KP Wasi"</mat-card-title>
+                  </mat-card-header>
+                <mat-card-content>
+                    <p>Asociación KP</p>
+                    <p>1 de octubre, 12:00 h</p>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button>Conoce más</button>
+                </mat-card-actions>
+            </mat-card>
+            <mat-card class="voluntariados" appearance="outlined">
+                <img mat-card-image src="aulas.jpg" alt="aulas">
+                <mat-card-header>
+                    <mat-card-title>Aulas hospitalarias</mat-card-title>
+                  </mat-card-header>
+                <mat-card-content>
+                    <p>Aprendo Contigo</p>
+                    <p>Octubre</p>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button>Conoce más</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</main> -->
+
+
  <app-navbar-main-page />
 <main class="content">
 
@@ -7,19 +60,21 @@
   <h3>Últimas novedades</h3>
   
   <div class="row">
-    <div class="col-md-4" *ngFor="let voluntariado of voluntariados">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{ voluntariado.titulo }}</h5>
-          <h1 class="card-text">{{ voluntariado.descripcion }}</h1>
-          <p><strong>Ubicación:</strong> {{ voluntariado.ubicacion }}</p>
-          <p><strong>Fecha inicio:</strong> {{ voluntariado.fecha_inicio | date: 'shortDate' }}</p>
-          <p><strong>Fecha fin:</strong> {{ voluntariado.fecha_fin | date: 'shortDate' }}</p>
-          <button routerLink="/volunteers">Conoce más</button>
-        </div>
-      </div>
+    <div *ngFor="let voluntariado of voluntariados">
+      <mat-card class="card" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>{{ voluntariado.nombre }}</mat-card-title>
+          <mat-card-subtitle>Descripción: {{ voluntariado.descripcion }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Ubicación: {{ voluntariado.ubicacion }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="ConocerMas(voluntariado)" class="custom-button">Conoce más</button>
+        </mat-card-actions>
+      </mat-card>
     </div>
   </div>
-  
+
 </main>
 

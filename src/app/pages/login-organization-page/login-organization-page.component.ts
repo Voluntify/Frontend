@@ -50,13 +50,14 @@ export class LoginOrganizationPageComponent {
     if (this.loginOrganizationForm.valid) {
       this.voluntifyService.loginUser(this.loginOrganizationForm.value).subscribe(
         response => {
-          if (response && response.jwttoken) {
+          if (response.jwttoken) {
             //almacena el token en la variable token
             this.token = response.jwttoken;
             //almacena el token en el servicio en el localstorage
             this.voluntifyService.setToken(response.jwttoken); 
+            this.voluntifyService.setUsername(this.loginOrganizationForm.value.nombre);
             //redirige a la pagina principal "main"
-            this.router.navigate(['/profile-organization']);
+            this.router.navigate(['/main']);
             //muestra un mensaje de inicio de sesion exitoso
             this.snackBar.open('Inicio de sesión exitoso', 'Cerrar', { duration: 3000 });
           } else {

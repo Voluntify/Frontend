@@ -3,22 +3,33 @@
 <main class="content">
 
     <h3>Todos los voluntariados</h3>
-  
+
+    <div class="search-by-name">
+    <mat-form-field appearance="fill">
+        <mat-label>Buscar por nombre</mat-label>
+        <input matInput [(ngModel)]="nombreBuscar" (input)="getVoluntariadosByName()">
+      </mat-form-field>
+      <button (click)="getVoluntariadosByName()">
+        <mat-icon>search</mat-icon>
+      </button>  
+    </div>
+
     <div class="row">
-        <div class="col-md-4" *ngFor="let voluntariado of voluntariados">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{ voluntariado.titulo }}</h5>
-                    <h1 class="card-text">{{ voluntariado.descripcion }}</h1>
-                    <p><strong>Ubicación:</strong> {{ voluntariado.ubicacion }}</p>
-                    <p><strong>Fecha inicio:</strong> {{ voluntariado.fecha_inicio | date: 'shortDate' }}</p>
-                    <p><strong>Fecha fin:</strong> {{ voluntariado.fecha_fin | date: 'shortDate' }}</p>
-                    <button routerLink="/volunteers">Conoce más</button>
-                </div>
+        <div *ngFor="let voluntariado of voluntariados">
+            <div class="card" appearance="outlined">
+            <mat-card-header>
+                <mat-card-title>{{ voluntariado.nombre }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Descripción: {{ voluntariado.descripcion }}</p>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button (click)="ConocerMas(voluntariado)" class="custom-button">Conoce más</button>
+              </mat-card-actions>
             </div>
         </div>
     </div>
-  
+
 </main>
 
 

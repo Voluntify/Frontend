@@ -49,11 +49,12 @@ export class LoginVolunteerPageComponent {
     if (this.loginVolunteerForm.valid) {
       this.voluntifyService.loginUser(this.loginVolunteerForm.value).subscribe(
         response => {
-          if (response && response.jwttoken) {
+          if (response.jwttoken) {
             //almacena el token en la variable token
             this.token = response.jwttoken;
             //almacena el token en el servicio en el localstorage
             this.voluntifyService.setToken(response.jwttoken); 
+            this.voluntifyService.setUsername(this.loginVolunteerForm.value.nombre);
             //redirige a la pagina principal "main"
             this.router.navigate(['/main']);
             //muestra un mensaje de inicio de sesion exitoso

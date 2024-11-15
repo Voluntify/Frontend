@@ -16,16 +16,6 @@ html {
     overflow: hidden;
 }
 
-/* Estilo principal
-main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-    color: red;
-}*/
-
 .content {
     display: flex;
     align-items: left;
@@ -99,45 +89,3 @@ button {
 button:hover {
     background-color: #8f76d0;
 }
-
-/* Estilos responsive 
-@media (max-width: 768px) {
-    main {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 2rem;
-        height: auto;
-    }
-
-    main div:first-child {
-        max-width: 100%;
-    }
-
-    main h1 {
-        font-size: 2.5rem;
-    }
-
-    main p {
-        font-size: 1.1rem;
-    }
-
-    main img {
-        max-width: 100%;
-        margin-top: 1.5rem;
-    }
-}
-
-.card {
-    margin-bottom: 20px;
-    width: 18 rem;
-    border: black;
-  }
-  
-.card-img-top {
-    max-height: 180px;
-    object-fit: cover;
-  }
-
-*/
-  
