@@ -21,7 +21,6 @@ import { CertificatesPageComponent } from './app/pages/certificates-page/certifi
 import { SettingsVolunteerPageComponent } from './app/pages/settings-volunteer-page/settings-volunteer-page.component';
 import { ProfileOrganizationPageComponent } from './app/pages/profile-organization-page/profile-organization-page.component';
 import { OrganizationPageComponent } from './app/pages/organization-page/organization-page.component';
-import { OrganizationPageByVolunteerComponent } from './app/pages/organization-page-by-volunteer/organization-page-by-volunteer.component';
 import { VolunteerSelectedPageComponent } from './app/pages/volunteer-selected-page/volunteer-selected-page.component';
 import { RegistrationFormPageComponent } from './app/pages/registration-form-page/registration-form-page.component';
 
@@ -46,9 +45,7 @@ const routes: Routes = [
   { path: 'volunteer-selected-page', component: VolunteerSelectedPageComponent},
   { path: 'registrarion-form-page', component: RegistrationFormPageComponent},
   { path: 'organization-page', component: ProfileOrganizationPageComponent},
-  { path: 'organization-main', component: OrganizationPageComponent},
-  { path: 'organization-by-volunteer', component: OrganizationPageByVolunteerComponent}
-
+  { path: 'organization', component: OrganizationPageComponent}
 ];
 
 bootstrapApplication(AppComponent, {
