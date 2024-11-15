@@ -7,6 +7,7 @@ import { Login} from '../model/login';
 import { inscripcionVoluntariado } from '../model/inscripcionVoluntariado';
 import { HabilidadesNuevasPorUsuario } from '../model/habilidadesNuevasPorUsuario';
 import { InteresesNuevosPorUsuario } from '../model/interesesNuevosPorUsuario';
+import { Voluntariado } from '../model/voluntariado';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,8 @@ export class VoluntifyService {
   public correo: string | null = null;
   public telefono: number | null = null;
   public direccion: string | null = null;
+  public contrasena: string | null = null;
+  public idOrganizacion: number | null = null;
 
   private apiUrl = 'http://localhost:8080'; // URL del backend
 
@@ -428,6 +431,57 @@ export class VoluntifyService {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         })
+      });
+    }
+
+
+    //metodo para almacenar el nombre de la organizacion en localstorage
+    // Método para almacenar la direccion en localStorage
+    sePassword(contrasena: string){
+      this.contrasena = contrasena;
+      localStorage.setItem('contrasena', contrasena);
+    }
+
+    // Método para obtener la direccion desde localStorage
+    gePassword(): string | null {
+      return localStorage.getItem('contrasena');
+    }
+
+    //metodo para actualizar contraseña de organizacion
+    putOrgPassword(organizacion: Organizaciones): Observable<Usuarios> {
+      const token = localStorage.getItem('token');
+      const codigo = this.getUserCode();
+      const contrasena = this.gePassword();
+    
+      return this.http.put<Usuarios>(`${this.apiUrl}/api/admin/ContrasenaModificar`, organizacion, { 
+        params: new HttpParams()
+          .set('codigo', codigo || '')  
+          .set('contrasena', contrasena || ''),  
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+      });
+    }
+
+      //metodo para almacenar el id de la organizacion
+      setidOrganizacion(idOrganizacion: number) {
+        this.idOrganizacion = idOrganizacion;
+        localStorage.setItem('idOrganizacion', idOrganizacion.toString());
+      }
+
+      //metodo para obtener el id de la organizacion
+      getidOrganizacion(): number | null {
+        return localStorage.getItem('idOrganizacion') ? parseInt(localStorage.getItem('idOrganizacion') || '') : null;
+      }
+
+    //metodo para registrar un nuevo voluntariado 
+    addVoluntariado(voluntariado: Voluntariado): Observable<Voluntariado> {
+      const token = localStorage.getItem('token');
+      return this.http.post<Voluntariado>(`${this.apiUrl}/api/admin/RegistrarVoluntariados`, voluntariado, { 
+        headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
       });
     }
 }

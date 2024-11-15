@@ -1,1 +1,110 @@
-<p>create-event-page works!</p>
+<main>
+    <div class="register">
+      <h1>Registra un voluntariado</h1>
+      <form [formGroup]="RegistrationVoluntariadoForm" (ngSubmit)="addVoluntariado()">
+  
+      <!-- Campo del titulo -->
+        <mat-form-field appearance="outline">
+          <mat-label>titulo</mat-label>
+          <input matInput formControlName="titulo" required />
+          <!-- Validaciones -->
+          <mat-error *ngIf="RegistrationVoluntariadoForm.get('titulo')?.invalid && (RegistrationVoluntariadoForm.get('titulo')?.dirty || 
+          RegistrationVoluntariadoForm.get('titulo')?.touched)">
+          {{ RegistrationVoluntariadoForm.get('titulo')?.hasError('required') ? 'El titulo es obligatorio' : '' }}  
+          {{ RegistrationVoluntariadoForm.get('titulo')?.hasError('minlength') ? 'El titulo debe ser 4 caracteres minimo' : '' }}
+          </mat-error>
+        </mat-form-field>
+
+         <!-- Campo del descripcion -->
+          <mat-form-field appearance="outline">
+            <mat-label>descripcion</mat-label>
+            <input matInput formControlName="descripcion" required />
+            <!-- Validaciones -->
+            <mat-error *ngIf="RegistrationVoluntariadoForm.get('descripcion')?.invalid && (RegistrationVoluntariadoForm.get('descripcion')?.dirty || 
+            RegistrationVoluntariadoForm.get('descripcion')?.touched)">
+            {{ RegistrationVoluntariadoForm.get('descripcion')?.hasError('required') ? 'La descripcion es obligatorio' : '' }}  
+            {{ RegistrationVoluntariadoForm.get('descripcion')?.hasError('minlength') ? 'La descripcion debe tener 10 letras minimo' : '' }}
+            </mat-error>
+          </mat-form-field>
+
+           <!-- Campo del ubicacion -->
+           <mat-form-field appearance="outline">
+            <mat-label>ubicacion</mat-label>
+            <input matInput formControlName="ubicacion" required />
+            <!-- Validaciones -->
+            <mat-error *ngIf="RegistrationVoluntariadoForm.get('ubicacion')?.invalid && (RegistrationVoluntariadoForm.get('ubicacion')?.dirty || 
+            RegistrationVoluntariadoForm.get('ubicacion')?.touched)">
+            {{ RegistrationVoluntariadoForm.get('ubicacion')?.hasError('required') ? 'La ubicacion es obligatorio' : '' }}  
+            {{ RegistrationVoluntariadoForm.get('ubicacion')?.hasError('minlength') ? 'La ubicacion debe tener 8 letras minimo' : '' }}
+            </mat-error>
+          </mat-form-field>
+
+           <!-- Campo del nombre -->
+         <mat-form-field appearance="outline">
+            <mat-label>requisitos</mat-label>
+            <input matInput formControlName="requisitos" required />
+            <!-- Validaciones -->
+            <mat-error *ngIf="RegistrationVoluntariadoForm.get('requisitos')?.invalid && (RegistrationVoluntariadoForm.get('requisitos')?.dirty || 
+            RegistrationVoluntariadoForm.get('requisitos')?.touched)">
+            {{ RegistrationVoluntariadoForm.get('requisitos')?.hasError('required') ? 'El requisitos es obligatorio' : '' }}  
+            {{ RegistrationVoluntariadoForm.get('requisitos')?.hasError('minlength') ? 'El requisitos debe tener 10 letras minimo' : '' }}
+            </mat-error>
+          </mat-form-field>
+  
+    
+      <!-- Campo de la fecha_inicio -->
+       <mat-form-field appearance="outline">
+          <mat-label>fecha_inicio</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="fecha_inicio" required />
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+          <!-- Validaciones -->
+          <mat-error *ngIf="RegistrationVoluntariadoForm.get('fecha_inicio')?.invalid && (RegistrationVoluntariadoForm.get('fecha_inicio')?.dirty || 
+          RegistrationVoluntariadoForm.get('fecha_inicio')?.touched)">
+          {{ RegistrationVoluntariadoForm.get('fecha_inicio')?.hasError('required') ? 'La fecha_inicio es obligatorio' : '' }}  
+          {{ RegistrationVoluntariadoForm.get('fecha_inicio')?.hasError('FechaInvalida1') ? 'La fecha_inicio debe ser igual o mayor que la fecha de hoy' : '' }}
+      </mat-error>
+      </mat-form-field>
+
+      <!-- Campo de la fecha_fin -->
+        <mat-form-field appearance="outline">
+            <mat-label>fecha_fin</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="fecha_fin" required />
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+            <!-- Validaciones -->
+            <mat-error *ngIf="RegistrationVoluntariadoForm.get('fecha_fin')?.invalid && (RegistrationVoluntariadoForm.get('fecha_fin')?.dirty || 
+            RegistrationVoluntariadoForm.get('fecha_fin')?.touched)">
+            {{ RegistrationVoluntariadoForm.get('fecha_fin')?.hasError('required') ? 'La fecha_fin es obligatorio' : '' }}  
+            {{ RegistrationVoluntariadoForm.get('fecha_fin')?.hasError('FechaInvalida2') ? 'La fecha_fin debe ser mayor que la fecha de hoy' : '' }}
+        </mat-error>
+        </mat-form-field>
+  
+  
+         <!-- Campo del Categorias -->
+        <mat-form-field appearance="outline">
+            <mat-label>Categorías</mat-label>
+            <mat-select formControlName="id_categorias" required>
+            <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombre }}</mat-option>
+            </mat-select>
+            <!-- Validaciones -->
+            <mat-error *ngIf="RegistrationVoluntariadoForm.get('id_categorias')?.invalid && (RegistrationVoluntariadoForm.get('id_categorias')?.dirty || 
+            RegistrationVoluntariadoForm.get('id_categorias')?.touched)">
+            {{ RegistrationVoluntariadoForm.get('id_categorias')?.hasError('required') ? 'El campo Categoría es obligatorio' : '' }}
+            </mat-error>
+        </mat-form-field>
+
+        <!-- Campo del id_organizaciones -->
+        <mat-form-field appearance="outline">
+            <mat-label>Organización</mat-label>
+            <input matInput formControlName="id_organizaciones" readonly>
+          </mat-form-field>
+          
+  
+        <div class="button-group">
+        <button mat-raised-button class="register-btn" type="submit" [disabled]="RegistrationVoluntariadoForm.invalid">Crear Voluntariado</button>
+        <button mat-button class="cancel-btn" type="button" (click)="cancelar()">Cancelar</button>
+      </div>
+      </form>
+    </div>
+  </main>
