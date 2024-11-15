@@ -13,19 +13,20 @@
     </div>
 
     <div class="row">
-        <div *ngFor="let organizacion of organizaciones">
-            <div class="card" appearance="outlined">
-            <mat-card-header>
-                <mat-card-title>{{ organizacion.nombre}}</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                <p>{{ organizacion.descripcion }}</p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button routerLink="/organization" class="custom-button">Conoce más</button>
-              </mat-card-actions>
-            </div>
+      <div *ngFor="let organizacion of organizaciones">
+        <div class="card" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>{{ organizacion.nombre }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ organizacion.descripcion }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button (click)="setOrganizationName(organizacion)" class="custom-button">Conoce más</button>
+          </mat-card-actions>
         </div>
+      </div>
     </div>
+    
 
 </main>

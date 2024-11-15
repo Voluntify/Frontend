@@ -23,8 +23,7 @@ import { Router, RouterLink } from '@angular/router';
     FormsModule,
     CommonModule,
     MatFormFieldModule,
-    MatInputModule,
-    RouterLink
+    MatInputModule
   ],
   templateUrl: './organizations-page.component.html',
   styleUrl: './organizations-page.component.css'
@@ -36,12 +35,13 @@ export class OrganizationsPageComponent {
 
   constructor(
     private voluntifyService: VoluntifyService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
     //se obtienen todos los voluntariados
     this.getOrganizaciones();
+    console.log(this.organizaciones); 
   }
 
   getOrganizaciones(){
@@ -73,4 +73,17 @@ export class OrganizationsPageComponent {
       this.getOrganizaciones();
     }
   }
+
+  setOrganizationName(organizacionesTotal: organizacionesTotal): void {
+    console.log('Nombre recibido:', organizacionesTotal.nombre);  // Verifica que el nombre se recibe correctamente
+    if (organizacionesTotal.nombre) {
+      localStorage.setItem('organizationName', organizacionesTotal.nombre as string);
+      console.log('Nombre de la organización guardado:', organizacionesTotal.nombre);
+      this.router.navigate(['/organization-by-volunteer']);
+    } else {
+      console.error('Nombre no válido recibido');
+    }
+  }
+  
+  
 }
