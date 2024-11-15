@@ -12,6 +12,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { VoluntifyService } from '../../service/voluntify.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { Router } from '@angular/router';
+import { NavbarOrganizationsComponent } from "../navbar-organizations/navbar-organizations.component";
 @Component({
   selector: 'app-create-event-page',
   standalone: true,
@@ -27,7 +28,8 @@ import { Router } from '@angular/router';
     MatRadioModule,
     FormsModule,
     MatDatepickerModule,
-  ],
+    NavbarOrganizationsComponent
+],
   templateUrl: './create-event-page.component.html',
   styleUrl: './create-event-page.component.css'
 })
