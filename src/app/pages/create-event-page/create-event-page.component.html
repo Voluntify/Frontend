@@ -100,11 +100,12 @@
             <mat-label>Organización</mat-label>
             <input matInput formControlName="id_organizaciones" readonly>
           </mat-form-field>
+
+          <button mat-raised-button class="register-btn" type="submit" [disabled]="RegistrationVoluntariadoForm.invalid">Crear Voluntariado</button>
      </div>
     </div>
     </div>
     <div class="actions">
-      <button mat-raised-button class="register-btn" type="submit" [disabled]="RegistrationVoluntariadoForm.invalid">Crear Voluntariado</button>
       <button mat-button class="cancel-btn" type="button" (click)="cancelar()">Cancelar</button>
     </div>
   </main>

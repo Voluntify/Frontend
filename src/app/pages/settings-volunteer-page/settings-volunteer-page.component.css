@@ -37,6 +37,11 @@
     font-weight: bold;
   }
 
+  .card mat-card-title{
+    line-height: 30px;
+  }
+  
+
   .edit{
     width: 100%;
     height: auto;
