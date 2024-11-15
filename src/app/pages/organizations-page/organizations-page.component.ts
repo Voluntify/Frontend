@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { organizacionesTotal } from '../../model/organizacionesTotal';
 import { VoluntifyService } from '../../service/voluntify.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-organizations-page',
@@ -21,9 +22,8 @@ import { VoluntifyService } from '../../service/voluntify.service';
     MatIconModule,
     FormsModule,
     CommonModule,
-
+    RouterLink,
     MatFormFieldModule,
-
     MatInputModule
   ],
   templateUrl: './organizations-page.component.html',
@@ -41,6 +41,10 @@ export class OrganizationsPageComponent {
   ngOnInit(): void {
     //se obtienen todos los voluntariados
     this.getOrganizaciones();
+  }
+
+  guardarNombreOrganizacion(organizaciones: organizacionesTotal){
+    localStorage.setItem('organizationName', organizaciones.nombre as string);
   }
 
   getOrganizaciones(){

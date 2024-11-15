@@ -393,10 +393,10 @@ export class VoluntifyService {
     }
 
     //metodo para obtener los voluntariados de una organizacion
-    obtenerVoluntariadosPorOrganizacion(): Observable<any> {
+    obtenerVoluntariadosPorOrganizacionA(): Observable<any> {
       const token = localStorage.getItem('token');
       var name = this.getUsername();
-      return this.http.get<any>(`${this.apiUrl}/api/admin/VerVoluntariadosPorOrganizacion`, {  
+      return this.http.get<any>(`${this.apiUrl}/api/admin/VerVoluntariadosPorOrganizacionA`, {  
         //se envia el nombre como parametro
         params: new HttpParams().set('name', name || ''), 
         headers: new HttpHeaders({
@@ -404,5 +404,30 @@ export class VoluntifyService {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}` })
     });
+    }
+
+  
+    obtenerInfoOrganizationMainB(): Observable<any> {
+      const token = localStorage.getItem('token');
+      const name = localStorage.getItem('organizationName') || '';
+      return this.http.get<any>(`${this.apiUrl}/api/user/VerOrganizacionesPorNombreB`, {
+        params: new HttpParams().set('name', name),
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+      });
+    }
+    
+    obtenerVoluntariadosPorOrganizacionB(): Observable<any> {
+      const token = localStorage.getItem('token');
+      const name = localStorage.getItem('organizationName') || ''; 
+      return this.http.get<any>(`${this.apiUrl}/api/user/VerVoluntariadosPorOrganizacionB`, {
+        params: new HttpParams().set('name', name),
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+      });
     }
 }

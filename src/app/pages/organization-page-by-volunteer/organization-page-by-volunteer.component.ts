@@ -12,7 +12,7 @@ import { Organizaciones } from '../../model/organizaciones';
 import { Voluntariado } from '../../model/voluntariado';
 
 @Component({
-  selector: 'app-organization-page',
+  selector: 'app-organization-page-by-volunteer',
   standalone: true,
   imports: [
     MatCardModule,
@@ -24,10 +24,10 @@ import { Voluntariado } from '../../model/voluntariado';
   MatFormFieldModule,
   MatInputModule
   ],
-  templateUrl: './organization-page.component.html',
-  styleUrl: './organization-page.component.css'
+  templateUrl: './organization-page-by-volunteer.component.html',
+  styleUrl: './organization-page-by-volunteer.component.css'
 })
-export class OrganizationPageComponent implements OnInit{
+export class OrganizationPageByVolunteerComponent implements OnInit{
   token: string | null = null;
   organizaciones: Organizaciones[] = [];
   voluntariados: Voluntariado[] = [];
@@ -44,7 +44,7 @@ export class OrganizationPageComponent implements OnInit{
   }
 
   obtenerInfoOrganizationMain(){
-    this.voluntifyService.obtenerInfoOrganizationMain().subscribe(
+    this.voluntifyService.obtenerInfoOrganizationMainB().subscribe(
       (data: Organizaciones[]) => {
         this.organizaciones = data; 
       },
@@ -55,7 +55,7 @@ export class OrganizationPageComponent implements OnInit{
   }
 
   obtenerVoluntariadosPorOrganizacion(){
-    this.voluntifyService.obtenerVoluntariadosPorOrganizacionA().subscribe(
+    this.voluntifyService.obtenerVoluntariadosPorOrganizacionB().subscribe(
       (data: Voluntariado[]) => {
         this.voluntariados = data; 
       },
@@ -65,3 +65,4 @@ export class OrganizationPageComponent implements OnInit{
     );
   }
 }
+
