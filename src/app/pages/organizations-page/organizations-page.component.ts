@@ -9,7 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-organizations-page',
@@ -35,7 +35,8 @@ export class OrganizationsPageComponent {
   nombreBuscar: string = '';  
 
   constructor(
-    private voluntifyService: VoluntifyService
+    private voluntifyService: VoluntifyService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {

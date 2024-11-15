@@ -3,7 +3,7 @@ import { VoluntifyService } from '../../service/voluntify.service';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -22,7 +22,8 @@ import { Voluntariado } from '../../model/voluntariado';
   FormsModule,
   CommonModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  RouterLink  
   ],
   templateUrl: './organization-page-by-volunteer.component.html',
   styleUrl: './organization-page-by-volunteer.component.css'
