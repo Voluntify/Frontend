@@ -20,6 +20,7 @@ import { ProfileVolunteerPageComponent } from './app/pages/profile-volunteer-pag
 import { CertificatesPageComponent } from './app/pages/certificates-page/certificates-page.component';
 import { SettingsVolunteerPageComponent } from './app/pages/settings-volunteer-page/settings-volunteer-page.component';
 import { ProfileOrganizationPageComponent } from './app/pages/profile-organization-page/profile-organization-page.component';
+import { OrganizationPageComponent } from './app/pages/organization-page/organization-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'start', pathMatch: 'full' },
@@ -39,6 +40,10 @@ const routes: Routes = [
   { path: 'profile-organization', component: ProfileOrganizationPageComponent},
   { path: 'certificates', component: CertificatesPageComponent},
   { path: 'settings-volunteer', component: SettingsVolunteerPageComponent},
+  { path: 'volunteer-selected-page', component: VolunteerSelectedPageComponent},
+  { path: 'registrarion-form-page', component: RegistrationFormPageComponent},
+  { path: 'organization-page', component: ProfileOrganizationPageComponent}
+
 ];
 
 bootstrapApplication(AppComponent, {
