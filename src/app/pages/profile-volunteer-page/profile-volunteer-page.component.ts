@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HabilidadesPorUsuario } from '../../model/habilidadesPorUsuario';
 import { InteresesPorUsuario } from '../../model/interesesPorUsuario';
 import { VoluntariadosPorUsuario } from '../../model/voluntariadosPorUsuario';
+import { NavbarMainPageComponent } from "../navbar-main-page/navbar-main-page.component";
 
 @Component({
   selector: 'app-profile-volunteer-page',
@@ -22,8 +23,9 @@ import { VoluntariadosPorUsuario } from '../../model/voluntariadosPorUsuario';
     MatInputModule,
     MatButtonModule,
     RouterLink,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    NavbarMainPageComponent
+],
   templateUrl: './profile-volunteer-page.component.html',
   styleUrl: './profile-volunteer-page.component.css'
 })

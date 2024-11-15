@@ -1,6 +1,147 @@
-.config-button {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 16px;
-  }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding-top: 60px;
+}
+
+
+.content h3{
+  color: darkslategray;
+  margin: 15px;
+}
+.row{
+  padding: 5px;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-perfil{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.cualidades{
+  line-height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info mat-card-title{
+  font-size: 28px;
+  color: #FF715B;
+  font-weight: bold;
+}
+
+.row{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+  padding: 20px;
+  padding-top: 0px;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 25px;
+  box-shadow: 2px 2px 5px grey;
+}
+
+.row h3{
+  font-size: 20px;
+  text-align: left;
+}
+
+mat-card-content{
+  line-height: 20px;
+  padding-left: 15px;
+}
+
+
+.voluntariado{
+  padding: 5px;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.card-voluntariado{
+  padding: 10px;
+  margin: 20px;
+  border-radius: 30px;
+  box-shadow: 2px 2px 5px grey;
+  width: 250px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-family: 'Poppins';
+}
+
+.card-voluntariado mat-card-title{
+  font-size: 17px;
+  white-space: normal;
+  text-align: center;
+  font-family: 'Poppins';
+}
+
+.card-voluntariado mat-card-subtitle{
+  font-size: 13.5px;
+  color: darkslategray;
+  font-family: 'Poppins';
+}
+.card-voluntariado p{
+  font-size: 13.5px;
+  color: darkslategray;
+  margin-top: 5px;
+  font-family: 'Poppins';
+}
+
+button {
+  background-color: #9D8DF1;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  margin:15px;
+  padding: 8px 30px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 2px 2px 5px grey;
+  font-family: 'Poppins';
+}
+
+
+button:hover {
+  background-color: #8f76d0;
+}
+
+
   
