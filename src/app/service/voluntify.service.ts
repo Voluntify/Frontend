@@ -22,6 +22,7 @@ export class VoluntifyService {
   public direccion: string | null = null;
   public contrasena: string | null = null;
   public idOrganizacion: number | null = null;
+  public suscripcion_activa: boolean = false;
 
   private apiUrl = 'http://localhost:8080'; // URL del backend
 
@@ -482,6 +483,45 @@ export class VoluntifyService {
         headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}` })
+      });
+    }
+
+    //metodos para suscripcion
+    setSuscripcion(suscripcion_activa: boolean){
+      this.suscripcion_activa = suscripcion_activa;
+      localStorage.setItem('suscripcion_activa', suscripcion_activa.toString());
+    }
+
+    // Método para obtener la suscripcion_activa desde localStorage
+    getSuscripcion(): string | null {
+      return localStorage.getItem('suscripcion_activa');
+    }
+
+    //metodo para convertir la suscripcion activa a booleano
+    suscripcion_activaToBoolean(): boolean {
+      const suscripcionActiva = localStorage.getItem('suscripcion_activa');
+      if (suscripcionActiva === 'true') {
+        return true;
+      } else if (suscripcionActiva === 'false') {
+        return false;
+      }
+      return false;
+    }
+
+    //metodo para suscripcion
+    putSuscripcion(usuario: Organizaciones): Observable<Organizaciones> {
+      const token = localStorage.getItem('token');
+      const id = this.getUserCode(); 
+      const suscripcion_activa = this.suscripcion_activaToBoolean();
+      
+      return this.http.put<Organizaciones>(`${this.apiUrl}/api/admin/SuscripcionDeOrganizacion`, usuario, { 
+        params: new HttpParams()
+          .set('id', id || '')  
+          .set('suscripcion_activa', suscripcion_activa), 
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
       });
     }
 }
