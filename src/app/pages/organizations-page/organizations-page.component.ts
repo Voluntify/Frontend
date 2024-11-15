@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-organizations-page',
@@ -22,7 +23,8 @@ import { Component } from '@angular/core';
     FormsModule,
     CommonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    RouterLink
   ],
   templateUrl: './organizations-page.component.html',
   styleUrl: './organizations-page.component.css'
