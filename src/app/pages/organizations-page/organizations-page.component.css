@@ -1,4 +1,6 @@
+
 * {
+    font-family: 'Poppins' !important;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -15,7 +17,7 @@ html {
 }
 
 .content {
-    display: center;
+    display: flex;
     align-items: left;
     flex-direction: column;
     width: 100vw;
@@ -23,18 +25,22 @@ html {
     padding-top: 60px;
 }
 
-.actions{
-    background-color: yellow;
+
+.image{
     width: 100%;
     height: 250px;
     padding: 30px;
-    display: flex;
-    flex-direction: column;
 }
 
-
+.image img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50px;
+    box-shadow: 0px 4px 10px black;
+}
 .content h3{
-    color: darkslategray;
+    color: black;
     margin: 15px;
 }
 .row{
@@ -66,9 +72,8 @@ html {
 }
 
 button {
-    background-color: #e4650a;
+    background-color: #9D8DF1;
     color: #ffffff;
-    font-weight: bolder;
     border: none;
     border-radius: 25px;
     margin-top:5px;
@@ -82,5 +87,5 @@ button {
 
 
 button:hover {
-    background-color: #e4650a;
+    background-color: #8f76d0;
 }

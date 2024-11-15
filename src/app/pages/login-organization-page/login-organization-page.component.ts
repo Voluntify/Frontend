@@ -57,7 +57,7 @@ export class LoginOrganizationPageComponent {
             this.voluntifyService.setToken(response.jwttoken); 
             this.voluntifyService.setUsername(this.loginOrganizationForm.value.nombre);
             //redirige a la pagina principal "main"
-            this.router.navigate(['/organization-main']);
+            this.router.navigate(['/organization-page']);
             //muestra un mensaje de inicio de sesion exitoso
             this.snackBar.open('Inicio de sesión exitoso', 'Cerrar', { duration: 3000 });
           } else {

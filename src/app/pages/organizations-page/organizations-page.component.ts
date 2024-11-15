@@ -1,15 +1,14 @@
-import { Component } from '@angular/core';
-import { NavbarMainPageComponent } from "../navbar-main-page/navbar-main-page.component";
-import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { organizacionesTotal } from '../../model/organizacionesTotal';
 import { VoluntifyService } from '../../service/voluntify.service';
-import { RouterLink } from '@angular/router';
+import { NavbarMainPageComponent } from '../navbar-main-page/navbar-main-page.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-organizations-page',
@@ -22,7 +21,6 @@ import { RouterLink } from '@angular/router';
     MatIconModule,
     FormsModule,
     CommonModule,
-    RouterLink,
     MatFormFieldModule,
     MatInputModule
   ],
@@ -41,10 +39,6 @@ export class OrganizationsPageComponent {
   ngOnInit(): void {
     //se obtienen todos los voluntariados
     this.getOrganizaciones();
-  }
-
-  guardarNombreOrganizacion(organizaciones: organizacionesTotal){
-    localStorage.setItem('organizationName', organizaciones.nombre as string);
   }
 
   getOrganizaciones(){
