@@ -5,7 +5,7 @@
         <div *ngFor="let inscripciones of inscripciones">
           <mat-card class="card" appearance="outlined">
             <mat-card-content>
-            <p>Estado: {{ inscripciones.estado ? 'Aceptado' : 'Dudoso' }}</p>
+            <p>Estado: {{ inscripciones.estado ? 'Aceptado' : 'Rechazado' }}</p>
              <p>fecha_inscripcion: {{ inscripciones.fecha_inscripcion }}</p>
               <p>id_usuarios: {{ inscripciones.id_usuarios }}</p>
             </mat-card-content>
