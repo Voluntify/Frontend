@@ -14,6 +14,7 @@ import { HabilidadesNuevasPorUsuario } from '../../model/habilidadesNuevasPorUsu
 import { habilidades } from '../../model/habilidades';
 import { intereses } from '../../model/intereses';
 import { InteresesNuevosPorUsuario } from '../../model/interesesNuevosPorUsuario';
+import { NavbarMainPageComponent } from "../navbar-main-page/navbar-main-page.component";
 
 @Component({
   selector: 'app-settings-volunteer-page',
@@ -25,7 +26,9 @@ import { InteresesNuevosPorUsuario } from '../../model/interesesNuevosPorUsuario
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    FormsModule  ],
+    FormsModule,
+    NavbarMainPageComponent
+],
   templateUrl: './settings-volunteer-page.component.html',
   styleUrl: './settings-volunteer-page.component.css'
 })

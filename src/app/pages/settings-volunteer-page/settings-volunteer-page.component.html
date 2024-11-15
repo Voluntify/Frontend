@@ -1,18 +1,18 @@
+<app-navbar-main-page />
+
 <main>
-    <div class="container">
-      <h2>Mi Perfil</h2>
-  
-      <div class="row">
+    <div class="content">
         <!-- Información Personal -->
         <div *ngFor="let usuario of usuario">
-          <div class="card" appearance="outlined">
-            <mat-card-header>
-              <mat-card-title>{{ usuario.nombre }}</mat-card-title>
-            </mat-card-header>
+          <div class="card-perfil" appearance="outlined">
+            <mat-card-title>{{ usuario.nombre }} {{ usuario.apellido }}</mat-card-title>
             <mat-card-content>
-              <p>{{ usuario.apellido }}</p>
               <p>{{ usuario.telefono }}</p>
               <p>{{ usuario.direccion }}</p>
+            </mat-card-content>
+          </div>
+
+          <div class="edit">
   
               <!-- Campo para actualizar el correo -->
               <mat-form-field appearance="fill">
@@ -40,46 +40,46 @@
               <button mat-raised-button (click)="actualizarDireccion(usuario)">
                 Actualizar Direccion
               </button>
-
-              <!-- Habilidades -->              
-                <div class="row">
-                <h3>Las habilidades que tienes:</h3>
+          </div>
+          <div class="habilidades">
+            <!-- Habilidades -->              
+              <div class="row">
+                <h3>Tus habilidades:</h3>
                 <div *ngFor="let habilidad of habilidad">
-                   <div class="card" appearance="outlined">
+                  <div class="card" appearance="outlined">
                     <mat-card-header>
-                    <mat-card-title>Nombre: {{ habilidad.habilidad_nombre + "  / " }}</mat-card-title>
-                    <mat-card-title>Codigo: {{ habilidad.habilidad_codigo }}</mat-card-title>
+                    <mat-card-title>{{ habilidad.habilidad_nombre}}</mat-card-title>
                   <!-- <button (click)="agregarHabilidad(habilidad.habilidad_codigo)">Agregar Habilidad</button> -->
-                  </mat-card-header>
+                    </mat-card-header>
+                  </div>
                 </div>
               </div>
-            </div>
 
             <!-- Habilidades en total -->              
-            <div class="row">
-              <h3>Las habilidades en total:</h3>
-              <div *ngFor="let habilidadesTotal of habilidadesTotal">
-                <div class="card" appearance="outlined">
-                  <mat-card-header>
-                    <mat-card-title>Nombre: {{ habilidadesTotal.nombre + "  / " }}</mat-card-title>
-                    <mat-card-title>Codigo: {{ habilidadesTotal.codigo + " / "}}</mat-card-title>
-                    <mat-card-title>Descripcion: {{ habilidadesTotal.descripcion}}</mat-card-title>
-                  </mat-card-header>
-                  <mat-card-actions>
-                    <button mat-button color="primary" (click)="agregarHabilidad(habilidadesTotal.codigo)">Agregar Habilidad</button>
-                  </mat-card-actions>
+              <div class="row">
+                <h3>Todas las habilidades:</h3>
+                <div *ngFor="let habilidadesTotal of habilidadesTotal">
+                  <div class="card" appearance="outlined">
+                    <mat-card-header>
+                      <mat-card-title>{{ habilidadesTotal.nombre + "  / " }}</mat-card-title>
+                      <mat-card-title>{{ habilidadesTotal.descripcion}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-actions>
+                      <button mat-button color="primary" (click)="agregarHabilidad(habilidadesTotal.codigo)">Agregar Habilidad</button>
+                    </mat-card-actions>
+                  </div>
                 </div>
               </div>
-            </div>
+          </div>
 
+          <div class="intereses">
               <!-- Intereses -->
               <div class="row">
-                  <h3>Los intereses que tienes: </h3>
+                  <h3>Tus intereses: </h3>
                   <div *ngFor="let interes of interes">
                    <div class="card" appearance="outlined">
                     <mat-card-header>
-                    <mat-card-title>Nombre: {{ interes.interes_nombre + "  / "}}</mat-card-title>
-                    <mat-card-title>Codigo: {{ interes.interes_codigo }}</mat-card-title>
+                    <mat-card-title>{{ interes.interes_nombre}}</mat-card-title>
                     </mat-card-header>
                   </div>
                   </div>
@@ -87,12 +87,11 @@
 
             <!-- Intereses en total -->              
             <div class="row">
-              <h3>Los intereses en total:</h3>
+              <h3>Todos los intereses:</h3>
               <div *ngFor="let interesTotal of interesTotal">
                 <div class="card" appearance="outlined">
                   <mat-card-header>
-                    <mat-card-title>Nombre: {{ interesTotal.nombre + "  / " }}</mat-card-title>
-                    <mat-card-title>Codigo: {{ interesTotal.codigo}}</mat-card-title>
+                    <mat-card-title>{{ interesTotal.nombre}}</mat-card-title>
                   </mat-card-header>
                   <mat-card-actions>
                     <button mat-button color="primary" (click)="agregarInteres(interesTotal.codigo)">Agregar Habilidad</button>
@@ -100,10 +99,8 @@
                 </div>
               </div>
             </div>
-            </mat-card-content>
           </div>
-        </div>
-      </div>
-    </div>
+            </div>
+          </div>
   </main>
   
