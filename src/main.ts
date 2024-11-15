@@ -17,7 +17,6 @@ import { MainPageComponent } from './app/pages/main-page/main-page.component';
 import { VolunteersPageComponent } from './app/pages/volunteers-page/volunteers-page.component';
 import { OrganizationsPageComponent } from './app/pages/organizations-page/organizations-page.component';
 import { ProfileVolunteerPageComponent } from './app/pages/profile-volunteer-page/profile-volunteer-page.component';
-import { CertificatesPageComponent } from './app/pages/certificates-page/certificates-page.component';
 import { SettingsVolunteerPageComponent } from './app/pages/settings-volunteer-page/settings-volunteer-page.component';
 import { ProfileOrganizationPageComponent } from './app/pages/profile-organization-page/profile-organization-page.component';
 import { OrganizationPageComponent } from './app/pages/organization-page/organization-page.component';
@@ -46,7 +45,6 @@ const routes: Routes = [
   { path: 'organizations', component: OrganizationsPageComponent},
   { path: 'profile-volunteer', component: ProfileVolunteerPageComponent},
   { path: 'profile-organization', component: ProfileOrganizationPageComponent},
-  { path: 'certificates', component: CertificatesPageComponent},
   { path: 'settings-volunteer', component: SettingsVolunteerPageComponent},
   { path: 'volunteer-selected-page', component: VolunteerSelectedPageComponent},
   { path: 'registrarion-form-page', component: RegistrationFormPageComponent},
