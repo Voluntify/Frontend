@@ -25,6 +25,10 @@ export class VoluntifyService {
   public suscripcion_activa: boolean = false;
   public voluntariadoAMostrar: string | null = null;
   public voluntariadoLista: string | null = null;
+  public idAceptar: number | null = null;
+  public idInscripcion: number | null = null;
+  public estado_inscripcion: boolean = false;
+  
 
   private apiUrl = 'http://localhost:8080'; // URL del backend
 
@@ -658,5 +662,113 @@ export class VoluntifyService {
           'Authorization': `Bearer ${token}`
         })
       }) 
+    }
+
+    //metodo para usar la variable de aceptar o denegar solicitudes
+    getidAceptar(): number | null {
+      return localStorage.getItem('idAceptar') ? parseInt(localStorage.getItem('idAceptar') || '') : null;
+    }
+
+    //metodo para obtener el perfil del usuario
+    obtenerPerfilByAdmin(): Observable<any> {
+      const token = localStorage.getItem('token');
+      var codigo = this.getidAceptar();
+      return this.http.get<any>(`${this.apiUrl}/api/admin/perfil`, {  
+        //se envia el nombre como parametro
+        params: new HttpParams().set('codigo', codigo || ''), 
+        headers: new HttpHeaders({
+        //se envia el token como header
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+    });
+    }
+
+    //metodo para obtener habilidades del usuario
+    obtenerHabilidadesPorPerfilByAdmin(): Observable<any> {
+      const token = localStorage.getItem('token');
+      var codigo = this.getidAceptar();
+      return this.http.get<any>(`${this.apiUrl}/api/admin/HabilidadesPorPerfilAdmin`, {  
+        //se envia el nombre como parametro
+        params: new HttpParams().set('codigo', codigo || ''), 
+        headers: new HttpHeaders({
+        //se envia el token como header
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+    });
+    }
+
+    //metodo para obtener intereses del usuario
+    obtenerInteresesPorPerfilByAdmin(): Observable<any> {
+      const token = localStorage.getItem('token');
+      var codigo = this.getidAceptar();
+      return this.http.get<any>(`${this.apiUrl}/api/admin/InteresesPorPerfilByAdmin`, {  
+        //se envia el nombre como parametro
+        params: new HttpParams().set('codigo', codigo || ''), 
+        headers: new HttpHeaders({
+        //se envia el token como header
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+    });
+    }
+
+    //metodo para obtener voluntariados realizados del usuario
+    obtenerVoluntariadosRealizadosorPerfilByAdmin(): Observable<any> {
+      const token = localStorage.getItem('token');
+      var codigo = this.getidAceptar();
+      return this.http.get<any>(`${this.apiUrl}/api/admin/VoluntariadosRealizadosPorUsuarioByAdmin`, {  
+        //se envia el nombre como parametro
+        params: new HttpParams().set('codigo', codigo || ''), 
+        headers: new HttpHeaders({
+        //se envia el token como header
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+    });
+    }
+
+
+    //metodos para inscripcion
+    setinscripcion(estado_inscripcion: boolean){
+      this.estado_inscripcion = estado_inscripcion;
+      localStorage.setItem('estado_inscripcion', estado_inscripcion.toString());
+    }
+
+    setIdInscripcion(idInscripcion: number) {
+       this.idInscripcion = idInscripcion;
+      localStorage.setItem('idInscripcion', idInscripcion.toString());
+    }
+    //metodo para usar la variable de aceptar o denegar inscripciones
+    getIdInscripcion(): number | null {
+      return localStorage.getItem('idInscripcion') ? parseInt(localStorage.getItem('idInscripcion') || '') : null;
+    }
+
+    //metodo para actualizar la inscripcion de un voluntariado (aceptar o rechazar)
+    putInscripcion(inscripciones: inscripcionVoluntariado, estado_inscripcion: boolean): Observable<inscripcionVoluntariado> {
+      const token = localStorage.getItem('token');
+      const id = this.getIdInscripcion();
+      return this.http.put<inscripcionVoluntariado>(`${this.apiUrl}/api/admin/EstadoDeInscripciones`, inscripciones, { 
+        params: new HttpParams()
+          .set('id', id || '')  
+          .set('estado', estado_inscripcion || ''),  
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+      });
+    }
+
+    //metodo para obtener voluntariados realizados del usuario
+    obtenerInscripcionesPorUsuario(): Observable<any> {
+      const token = localStorage.getItem('token');
+      var codigo = this.getidAceptar();
+      var inscripcion = this.getIdInscripcion();
+      return this.http.get<any>(`${this.apiUrl}/api/admin/VerInscripcionesPorUsuario`, {  
+        //se envia el nombre como parametro
+        params: new HttpParams().set('codigo', codigo || '')
+        .set('codigo2', inscripcion || ''), 
+        headers: new HttpHeaders({
+        //se envia el token como header
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` })
+    });
     }
 }

@@ -1,1 +1,94 @@
-<p>volunteer-page works!</p>
+<app-navbar-organizations />
+
+<main class="content">
+    <div class="perfil">
+      <!-- Información Personal -->
+      <div *ngFor="let usuario of usuario">
+        <div class="card-perfil" appearance="outlined">
+          <div class="info">
+          <mat-card-title>{{ usuario.nombre }}</mat-card-title>
+          <mat-card-content>
+            <p>Direccion: {{ usuario.direccion }}</p>
+            <p>Telefono: {{ usuario.telefono }}</p>
+            <p>Correo: {{ usuario.correo }}</p>
+            <p>Direccion: {{ usuario.direccion }}</p>
+            <p>Nombre: {{ usuario.nombre }}</p>
+          </mat-card-content>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cualidades"> 
+      <!-- Habilidades -->
+      <div class="row">
+        <h3>Habilidades</h3>
+        <div *ngFor="let habilidad of habilidad">
+          <div class="card" appearance="outlined">
+            <mat-card-header>
+                <mat-card-content>{{ habilidad.habilidad_nombre }}</mat-card-content>
+            </mat-card-header>
+          </div>
+        </div>
+      </div>
+
+      <!-- Intereses -->
+      <div class="row">
+        <h3>Intereses</h3>
+          <div *ngFor="let interes of interes">
+             <div class="card" appearance="outlined">
+               <mat-card-header>
+                  <mat-card-content>{{ interes.interes_nombre }}</mat-card-content>
+               </mat-card-header>
+             </div>
+           </div>
+        </div>
+  
+        <!-- Voluntariados Realizados -->
+        <h3>Voluntariados Realizados</h3>
+        <div class="voluntariado">
+          <div *ngFor="let voluntariados of voluntariados">
+            <div class="card-voluntariado" appearance="outlined">
+              <mat-card-header>
+                  <mat-card-title>{{ voluntariados.titulo }}</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p>Direccion: {{ voluntariados.descripcion }}</p>
+              </mat-card-content>
+
+            </div>
+          </div>
+        </div>  
+    </div>
+
+    <div class="row">
+      <div *ngFor="let inscripciones of inscripciones">
+        <div class="card" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>Aceptar</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-radio-group [(ngModel)]="inscripciones.estado">
+              <mat-radio-button value="true">Aceptar Solicitud</mat-radio-button>
+            </mat-radio-group>
+          </mat-card-content>
+        </div>
+        <div class="card" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>Rechazar</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-radio-group [(ngModel)]="inscripciones.estado">
+              <mat-radio-button value="false">Rechazar Solicitud</mat-radio-button>
+            </mat-radio-group>
+          </mat-card-content>
+        </div>
+        <!-- Solo un botón para actualizar la suscripción -->
+        <button mat-raised-button color="accent" (click)="actualizarInscripcion(inscripciones)">
+          Actualizar inscripcion
+        </button>
+      </div>
+    </div>
+    
+         
+</main>

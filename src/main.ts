@@ -28,6 +28,7 @@ import { SubscriptionPageComponent } from './app/pages/subscription-page/subscri
 import { PreviewEventPageComponent } from './app/pages/preview-event-page/preview-event-page.component';
 import { PreviewEventPremiumPageComponent } from './app/pages/preview-event-premium-page/preview-event-premium-page.component';
 import { RegistrationListPageComponent } from './app/pages/registration-list-page/registration-list-page.component';
+import { VolunteerPageComponent } from './app/pages/volunteer-page/volunteer-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'start', pathMatch: 'full' },
@@ -55,7 +56,8 @@ const routes: Routes = [
   { path: 'subscription', component: SubscriptionPageComponent},
   { path: 'view-event-free', component: PreviewEventPageComponent},
   { path: 'view-event-premium', component: PreviewEventPremiumPageComponent},
-  { path: 'list-view', component: RegistrationListPageComponent}
+  { path: 'list-view', component: RegistrationListPageComponent},
+  { path: 'volunteer-selecte-by-organization', component: VolunteerPageComponent}
 
 ];
 

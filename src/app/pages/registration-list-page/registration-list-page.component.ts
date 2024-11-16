@@ -55,4 +55,19 @@ export class RegistrationListPageComponent implements OnInit{
       }
     );
   }
+
+  setidAceptar(inscripciones: inscripcionVoluntariado): void {
+    if (inscripciones.id_usuarios) {
+      localStorage.setItem('idAceptar', inscripciones.id_usuarios.toString());
+      this.voluntifyService.setinscripcion(inscripciones.estado);
+      if (inscripciones.codigo !== undefined) {
+        this.voluntifyService.setIdInscripcion(inscripciones.codigo);
+      } else {
+        console.error('Código no válido recibido');
+      }
+      this.router.navigate(['/volunteer-selecte-by-organization']);
+    } else {
+      console.error('Nombre no válido recibido');
+    }
+  }
 }

@@ -75,10 +75,8 @@ export class OrganizationsPageComponent {
   }
 
   setOrganizationName(organizacionesTotal: organizacionesTotal): void {
-    console.log('Nombre recibido:', organizacionesTotal.nombre);  // Verifica que el nombre se recibe correctamente
     if (organizacionesTotal.nombre) {
       localStorage.setItem('organizationName', organizacionesTotal.nombre as string);
-      console.log('Nombre de la organización guardado:', organizacionesTotal.nombre);
       this.router.navigate(['/organization-by-volunteer']);
     } else {
       console.error('Nombre no válido recibido');
