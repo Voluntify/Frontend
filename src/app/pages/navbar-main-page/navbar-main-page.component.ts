@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
@@ -19,5 +19,13 @@ import { MatMenuModule } from '@angular/material/menu';
   styleUrl: './navbar-main-page.component.css'
 })
 export class NavbarMainPageComponent {
+  constructor(private router: Router) {}
 
+  CerrarSesion(): void {
+    // Limpiar todo el localStorage
+    localStorage.clear();
+
+    // Navegar al inicio de sesión
+    this.router.navigate(['/start']);
+  }
 }

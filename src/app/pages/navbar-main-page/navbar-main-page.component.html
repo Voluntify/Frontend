@@ -16,11 +16,10 @@
                   <mat-icon>settings</mat-icon>
                   <span>Configurar perfil</span>
                 </button>
-                <button mat-menu-item routerLink="/start">
-                    <mat-icon>logout</mat-icon>
-                    <span>Salir</span>
+                <button mat-menu-item (click)="CerrarSesion()">logout
+                <span>Salir</span>
                 </button>
               </mat-menu>
-              
+            
         </div>
 </mat-toolbar>

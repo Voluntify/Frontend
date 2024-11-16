@@ -54,11 +54,6 @@ export class AssistanceControlComponent implements OnInit{
     );
   }
 
-  ListaInscritos(voluntariados: Voluntariado){
-    this.voluntifyService.setVoluntariadoLista(voluntariados.titulo as string);
-    this.router.navigate(['/list-view']);
-  }
-
   Asistencias(voluntariados: Voluntariado){
     this.voluntifyService.setVoluntariadoLista(voluntariados.titulo as string);
     this.router.navigate(['/assistance-control']);
