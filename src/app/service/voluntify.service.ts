@@ -514,10 +514,14 @@ export class VoluntifyService {
       return false;
     }
 
+    getIdOrg(): string | null {
+      return localStorage.getItem('idOrganizacion');
+    }
+
     //metodo para suscripcion
     putSuscripcion(usuario: Organizaciones): Observable<Organizaciones> {
       const token = localStorage.getItem('token');
-      const id = this.getUserCode(); 
+      const id = this.getIdOrg(); 
       const suscripcion_activa = this.suscripcion_activaToBoolean();
       
       return this.http.put<Organizaciones>(`${this.apiUrl}/api/admin/SuscripcionDeOrganizacion`, usuario, { 

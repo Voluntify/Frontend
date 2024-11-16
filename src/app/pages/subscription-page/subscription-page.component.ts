@@ -57,8 +57,7 @@ export class SubscriptionPageComponent {
   }
 
   actualizarSuscripcion(organizaciones: Organizaciones): void {
-    this.voluntifyService.setSuscripcion(this.organizaciones[0].suscripcion_activa);
-
+    this.voluntifyService.setSuscripcion(organizaciones.suscripcion_activa as boolean);
     this.voluntifyService.putSuscripcion(organizaciones).subscribe(
       (updatedUser) => {
         this.snackBar.open('Suscripción actualizada exitosamente', 'Cerrar', { duration: 3000 });
