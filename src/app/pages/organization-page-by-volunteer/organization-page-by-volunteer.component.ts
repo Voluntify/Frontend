@@ -69,6 +69,7 @@ export class OrganizationPageByVolunteerComponent implements OnInit{
 
   setIdVoluntariado(voluntariados: Voluntariado): void {
     this.voluntifyService.setIdVoluntariado(voluntariados.codigo as number);
+    this.voluntifyService.setNombreABuscar(voluntariados.titulo as string);
     this.router.navigate(['/volunteer-selected-page']);
   }
 }
