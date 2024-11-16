@@ -1,11 +1,11 @@
 <main>
   <div class="register">
-    <h1>Registra un voluntariado</h1>
+    <h1>Crea un voluntariado</h1>
     <form [formGroup]="RegistrationVoluntariadoForm" (ngSubmit)="addVoluntariado()">
 
     <!-- Campo del titulo -->
       <mat-form-field appearance="outline">
-        <mat-label>titulo</mat-label>
+        <mat-label>Titulo</mat-label>
         <input matInput formControlName="titulo" required />
         <!-- Validaciones -->
         <mat-error *ngIf="RegistrationVoluntariadoForm.get('titulo')?.invalid && (RegistrationVoluntariadoForm.get('titulo')?.dirty || 
@@ -17,7 +17,7 @@
 
        <!-- Campo del descripcion -->
         <mat-form-field appearance="outline">
-          <mat-label>descripcion</mat-label>
+          <mat-label>Descripcion</mat-label>
           <input matInput formControlName="descripcion" required />
           <!-- Validaciones -->
           <mat-error *ngIf="RegistrationVoluntariadoForm.get('descripcion')?.invalid && (RegistrationVoluntariadoForm.get('descripcion')?.dirty || 
@@ -29,7 +29,7 @@
 
          <!-- Campo del ubicacion -->
          <mat-form-field appearance="outline">
-          <mat-label>ubicacion</mat-label>
+          <mat-label>Ubicacion</mat-label>
           <input matInput formControlName="ubicacion" required />
           <!-- Validaciones -->
           <mat-error *ngIf="RegistrationVoluntariadoForm.get('ubicacion')?.invalid && (RegistrationVoluntariadoForm.get('ubicacion')?.dirty || 
@@ -41,7 +41,7 @@
 
          <!-- Campo del nombre -->
        <mat-form-field appearance="outline">
-          <mat-label>requisitos</mat-label>
+          <mat-label>Requisitos</mat-label>
           <input matInput formControlName="requisitos" required />
           <!-- Validaciones -->
           <mat-error *ngIf="RegistrationVoluntariadoForm.get('requisitos')?.invalid && (RegistrationVoluntariadoForm.get('requisitos')?.dirty || 
@@ -54,7 +54,7 @@
   
     <!-- Campo de la fecha_inicio -->
      <mat-form-field appearance="outline">
-        <mat-label>fecha_inicio</mat-label>
+        <mat-label>Fecha de inicio</mat-label>
         <input matInput [matDatepicker]="picker1" formControlName="fecha_inicio" required />
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
@@ -68,7 +68,7 @@
 
     <!-- Campo de la fecha_fin -->
       <mat-form-field appearance="outline">
-          <mat-label>fecha_fin</mat-label>
+          <mat-label>Fecha de fin</mat-label>
           <input matInput [matDatepicker]="picker2" formControlName="fecha_fin" required />
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
