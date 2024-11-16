@@ -29,6 +29,7 @@ import { PreviewEventPageComponent } from './app/pages/preview-event-page/previe
 import { PreviewEventPremiumPageComponent } from './app/pages/preview-event-premium-page/preview-event-premium-page.component';
 import { RegistrationListPageComponent } from './app/pages/registration-list-page/registration-list-page.component';
 import { VolunteerPageComponent } from './app/pages/volunteer-page/volunteer-page.component';
+import { AssistanceControlComponent } from './app/pages/assistance-control/assistance-control.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'start', pathMatch: 'full' },
@@ -57,7 +58,8 @@ const routes: Routes = [
   { path: 'view-event-free', component: PreviewEventPageComponent},
   { path: 'view-event-premium', component: PreviewEventPremiumPageComponent},
   { path: 'list-view', component: RegistrationListPageComponent},
-  { path: 'volunteer-selecte-by-organization', component: VolunteerPageComponent}
+  { path: 'volunteer-selecte-by-organization', component: VolunteerPageComponent},
+  { path: 'assistance-control', component: AssistanceControlComponent}
 
 ];
 

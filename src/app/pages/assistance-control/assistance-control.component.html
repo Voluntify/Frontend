@@ -1,0 +1,25 @@
+<app-navbar-organizations />
+<main class="content">
+    <div class="perfil">
+        <div *ngFor="let asistencia of asistencia">
+          <div class="card-perfil" appearance="outlined">
+            <div class="info">
+              <mat-card-title>{{ asistencia.codigo }}</mat-card-title>
+              <mat-card-content>
+                <p><strong>Estado de la asistencia: </strong>{{ asistencia.estado_asistencia }}</p>
+                <p><strong>Fecha: </strong>{{ asistencia.fecha }}</p>
+                <p><strong>ID del usuario: </strong>{{ asistencia.id_usuarios }}</p>
+                <p><strong>ID del voluntariado:</strong> {{ asistencia.id_voluntariados }}</p>
+              </mat-card-content>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+    <div class="actions">
+      <mat-card-actions>
+        <button mat-button routerLink="/organization-main" class="custom-button">Volver a inicio</button>
+      </mat-card-actions>
+    </div>
+  </main>

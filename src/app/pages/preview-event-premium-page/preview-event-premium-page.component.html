@@ -1,1 +1,101 @@
-<p>preview-event-premium-page works!</p>
+<app-navbar-organizations />
+<main class="content">
+    <div class="perfil">
+        <div *ngFor="let voluntariados of voluntariados">
+          <div class="card-perfil" appearance="outlined">
+            <div class="info">
+              <mat-card-title>{{ voluntariados.titulo }}</mat-card-title>
+              <mat-card-content>
+                <p><strong>Descripción: </strong>{{ voluntariados.descripcion }}</p>
+                <p><strong>Fecha de inicio: </strong>{{ voluntariados.fecha_inicio }}</p>
+                <p><strong>Fecha de fin: </strong>{{ voluntariados.fecha_fin }}</p>
+                <p><strong>Ubicacion:</strong> {{ voluntariados.ubicacion }}</p>
+                <p><strong>Requisitos:</strong> {{ voluntariados.requisitos }}</p>
+              </mat-card-content>
+            </div>
+          </div>
+        </div>
+      </div>
+                    
+      <div class="edit">
+        <div *ngFor="let voluntariados of voluntariados">
+          <div class="card" appearance="outlined">  
+            <mat-form-field appearance="fill">
+              <mat-label>Descripcion</mat-label>
+              <input matInput [(ngModel)]="voluntariados.descripcion"/>
+            </mat-form-field>
+            <button mat-raised-button (click)="actualizarDescripcion(voluntariados)">
+              Actualizar Descripcion
+            </button>
+          </div>
+        </div>
+      
+      <div *ngFor="let voluntariados of voluntariados">
+        <div class="card" appearance="outlined">  
+        <mat-form-field appearance="fill">
+          <mat-label>Requisitos</mat-label>
+          <input matInput [(ngModel)]="voluntariados.requisitos"/>
+        </mat-form-field>
+        <button mat-raised-button (click)="actualizarRequisitos(voluntariados)">
+          Actualizar Requisitos
+        </button>
+      </div>
+    </div>
+
+
+    <div *ngFor="let voluntariados of voluntariados">
+        <div class="card" appearance="outlined">  
+        <mat-form-field appearance="fill">
+          <mat-label>Ubicacion</mat-label>
+          <input matInput [(ngModel)]="voluntariados.ubicacion"/>
+        </mat-form-field>
+        <button mat-raised-button (click)="actualizarUbicacion(voluntariados)">
+          Actualizar Ubicacion
+        </button>
+      </div>
+    </div>
+
+    <div *ngFor="let voluntariados of voluntariados">
+      <div class="card" appearance="outlined">  
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha_inicio</mat-label>
+        <input matInput [(ngModel)]="voluntariados.fecha_inicio"/>
+      </mat-form-field>
+      <button mat-raised-button (click)="actualizarFecha_inicio(voluntariados)">
+        Actualizar Fecha_inicio
+      </button>
+    </div>
+  </div>
+
+
+    <div *ngFor="let voluntariados of voluntariados">
+        <div class="card" appearance="outlined">  
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha_fin</mat-label>
+          <input matInput [(ngModel)]="voluntariados.fecha_fin"/>
+        </mat-form-field>
+        <button mat-raised-button (click)="actualizaFecha_fin(voluntariados)">
+          Actualizar Fecha_fin
+        </button>
+      </div>
+    </div>
+
+    </div>
+    <div class="actions">
+    <div *ngFor="let voluntariados of voluntariados">
+      <div class="card" appearance="outlined">  
+    <mat-card-actions>
+      <button mat-button (click)="ListaInscritos(voluntariados)">Ver inscritos</button>
+    </mat-card-actions>
+
+    <mat-card-actions>
+        <button mat-button (click)="Asistencias(voluntariados)">Control de Asistencia</button>
+      </mat-card-actions>
+    </div>
+    </div>
+    
+      <mat-card-actions>
+        <button mat-button routerLink="/organization-main" class="custom-button">Volver a inicio</button>
+      </mat-card-actions>
+    </div>
+  </main>

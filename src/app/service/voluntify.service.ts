@@ -771,4 +771,21 @@ export class VoluntifyService {
         'Authorization': `Bearer ${token}` })
     });
     }
+
+    //metodo para obtener las asistencias de un voluntariado
+      getAsistenciasVoluntariado(){
+      const token = localStorage.getItem('token');
+      //se almacena en la constante name el name del localstorage con la funcion getNombreABuscar
+      var name = this.getVoluntariadoLista();
+      return this.http.get<any>(`${this.apiUrl}/api/admin/VerAsistenciasPorNombreDeVoluntariado`, { 
+        //se envia el nombre como parametro
+        params: new HttpParams().set('name', name || ''), 
+        //se envia el token como header
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        })
+       });
+    }
+
 }
