@@ -1,19 +1,19 @@
+<app-navbar-main-page />
+
 <main class="content">
-    <h3>Info de la organizacion</h3>
-    
-    <div class="row">
+    <div class="perfil">
       <div *ngFor="let organizaciones of organizaciones">
-        <mat-card class="card" appearance="outlined">
-          <mat-card-header>
-            <mat-card-title>Nombre de la organizacion: {{ organizaciones.nombre }}</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p>Descripción: {{ organizaciones.descripcion }}</p>
-            <p>Codigo: {{ organizaciones.codigo }}</p>
-            <p>Ubicación: {{ organizaciones.correo }}</p>
-            <p>Ubicación: {{ organizaciones.telefono }}</p>
-          </mat-card-content>
-        </mat-card>
+        <div class="card-perfil" appearance="outlined">
+          <div class="info">
+            <mat-card-title>{{ organizaciones.nombre }}</mat-card-title>
+            <mat-card-content>
+              <p>{{ organizaciones.descripcion }}</p>
+              <p><strong>Ubicacion: </strong>{{organizaciones.direccion}}</p>
+              <p><strong>Correo:</strong> {{ organizaciones.correo }}</p>
+              <p><strong>Telefono: </strong>{{ organizaciones.telefono }}</p>
+            </mat-card-content>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -22,15 +22,14 @@
         <div *ngFor="let voluntariados of voluntariados">
           <mat-card class="card" appearance="outlined">
             <mat-card-header>
-              <mat-card-title>Nombre: {{ voluntariados.titulo }}</mat-card-title>
+              <mat-card-title>{{ voluntariados.titulo }}</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-              <p>Descripción: {{ voluntariados.descripcion }}</p>
-              <p>Codigo: {{ voluntariados.fecha_inicio }}</p>
-              <p>Ubicación: {{ voluntariados.fecha_fin }}</p>
-              <p>Ubicación: {{ voluntariados.ubicacion }}</p>
-              <p>Ubicación: {{ voluntariados.ubicacion }}</p>
-              <p>Ubicación: {{ voluntariados.requisitos }}</p>
+              <p>{{ voluntariados.descripcion }}</p>
+              <p><strong>Fecha de inicio:</strong> {{ voluntariados.fecha_inicio }}</p>
+              <p><strong>Fecha de fin:</strong> {{ voluntariados.fecha_fin }}</p>
+              <p><strong>Ubicación:</strong> {{ voluntariados.ubicacion }}</p>
+              <p><strong>Requisitos:</strong> {{ voluntariados.requisitos }}</p>
             </mat-card-content>
             <mat-card-actions>
               <button mat-button (click)="setIdVoluntariado(voluntariados)">

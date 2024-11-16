@@ -10,20 +10,22 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Organizaciones } from '../../model/organizaciones';
 import { Voluntariado } from '../../model/voluntariado';
+import { NavbarMainPageComponent } from "../navbar-main-page/navbar-main-page.component";
 
 @Component({
   selector: 'app-organization-page-by-volunteer',
   standalone: true,
   imports: [
     MatCardModule,
-  MatButtonModule,
-  CommonModule,
-  MatIconModule,
-  FormsModule,
-  CommonModule,
-  MatFormFieldModule,
-  MatInputModule
-  ],
+    MatButtonModule,
+    CommonModule,
+    MatIconModule,
+    FormsModule,
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    NavbarMainPageComponent
+],
   templateUrl: './organization-page-by-volunteer.component.html',
   styleUrl: './organization-page-by-volunteer.component.css'
 })

@@ -48,7 +48,7 @@
                 <div *ngFor="let habilidad of habilidad">
                   <div class="card" appearance="outlined">
                     <mat-card-header>
-                    <mat-card-title>{{ habilidad.habilidad_nombre}}</mat-card-title>
+                    <mat-card-title><mat-icon>favorite</mat-icon>{{ habilidad.habilidad_nombre}}</mat-card-title>
                   <!-- <button (click)="agregarHabilidad(habilidad.habilidad_codigo)">Agregar Habilidad</button> -->
                     </mat-card-header>
                   </div>
@@ -79,7 +79,7 @@
                   <div *ngFor="let interes of interes">
                    <div class="card" appearance="outlined">
                     <mat-card-header>
-                    <mat-card-title>{{ interes.interes_nombre}}</mat-card-title>
+                    <mat-card-title><mat-icon>favorite</mat-icon>{{ interes.interes_nombre}}</mat-card-title>
                     </mat-card-header>
                   </div>
                   </div>
