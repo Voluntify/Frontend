@@ -29,9 +29,10 @@ export class VoluntifyService {
   public idInscripcion: number | null = null;
   public estado_inscripcion: boolean = false;
   
-
-  private apiUrl = 'http://localhost:8080'; // URL del backend
-
+  //http://localhost:8080
+  //https://api-backend-fqkj.onrender.com
+  private apiUrl = 'https://api-backend-fqkj.onrender.com'; // URL del backend
+ 
   constructor(private http: HttpClient) { }
 
    //metodo para registrar usuario
