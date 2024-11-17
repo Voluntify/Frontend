@@ -30,8 +30,8 @@ export class VoluntifyService {
   public estado_inscripcion: boolean = false;
   
   //http://localhost:8080
-  //https://api-backend-fqkj.onrender.com
-  private apiUrl = 'https://api-backend-voluntify.onrender.com'; // URL del backend
+  //https://api-backend-voluntify.onrender.com
+  private apiUrl = 'http://localhost:8080'; // URL del backend
  
   constructor(private http: HttpClient) { }
 
