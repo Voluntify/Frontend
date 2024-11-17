@@ -31,7 +31,7 @@ export class VoluntifyService {
   
   //http://localhost:8080
   //https://api-backend-fqkj.onrender.com
-  private apiUrl = 'https://api-backend-fqkj.onrender.com'; // URL del backend
+  private apiUrl = 'http://localhost:8080'; // URL del backend
  
   constructor(private http: HttpClient) { }
 
