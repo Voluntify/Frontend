@@ -30,6 +30,8 @@ import { PreviewEventPremiumPageComponent } from './app/pages/preview-event-prem
 import { RegistrationListPageComponent } from './app/pages/registration-list-page/registration-list-page.component';
 import { VolunteerPageComponent } from './app/pages/volunteer-page/volunteer-page.component';
 import { AssistanceControlComponent } from './app/pages/assistance-control/assistance-control.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 const routes: Routes = [
   { path: '', redirectTo: 'start', pathMatch: 'full' },
@@ -66,5 +68,5 @@ const routes: Routes = [
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
-    importProvidersFrom(HttpClientModule, RouterModule, MatToolbarModule, BrowserAnimationsModule), provideAnimationsAsync(), provideAnimationsAsync()]
+    importProvidersFrom(HttpClientModule, RouterModule, MatToolbarModule, BrowserAnimationsModule), provideAnimationsAsync(), provideAnimationsAsync(), provideFirebaseApp(() => initializeApp({"projectId":"voluntify-a6ae9","appId":"1:258302128129:web:b316adacfd2bf051fd9000","storageBucket":"voluntify-a6ae9.firebasestorage.app","apiKey":"AIzaSyANikSw8ZCDXqZmi6FSqF68Eov9If1-EdA","authDomain":"voluntify-a6ae9.firebaseapp.com","messagingSenderId":"258302128129"})), provideFirestore(() => getFirestore())]
 });
